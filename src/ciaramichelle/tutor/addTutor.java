@@ -2,11 +2,18 @@ package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
@@ -43,8 +50,8 @@ public class addTutor extends JFrame {
 	 * Create the frame.
 	 */
 	public addTutor() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 589, 590);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 589, 697);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -240,6 +247,78 @@ public class addTutor extends JFrame {
 		contentPane.add(textField_4, "cell 3 23,growx");
 		
 		JButton btnAddTutor = new JButton("Add Tutor");
+		btnAddTutor.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					RandomAccessFile current = new RandomAccessFile("binary.dat", "rw");
+					current.writeUTF(textField.getText());
+					current.writeUTF(textField_1.getText());
+					current.writeInt((int) comboBox.getItemAt(comboBox.getSelectedIndex()));
+					current.writeBoolean(chckbxPeriod.isSelected());
+					current.writeBoolean(chckbxPeriod_1.isSelected());
+					current.writeBoolean(chckbxPeriod_2.isSelected());
+					current.writeBoolean(chckbxPeriod_3.isSelected());
+					current.writeBoolean(chckbxPeriod_4.isSelected());
+					current.writeBoolean(chckbxAfterSchool.isSelected());
+					current.writeBoolean(checkBox_5.isSelected());
+					current.writeBoolean(checkBox_6.isSelected());
+					current.writeBoolean(checkBox_7.isSelected());
+					current.writeBoolean(checkBox_8.isSelected());
+					current.writeBoolean(checkBox_9.isSelected());
+					current.writeBoolean(checkBox_10.isSelected());
+					current.writeBoolean(chckbxMonday.isSelected());
+					current.writeBoolean(chckbxTuesday.isSelected());
+					current.writeBoolean(chckbxWednesday.isSelected());
+					current.writeBoolean(chckbxThursday.isSelected());
+					current.writeBoolean(chckbxFriday.isSelected());
+					//grade nine
+					current.writeBoolean(chckbxNewCheckBox.isSelected());
+					current.writeBoolean(chckbxEnglish.isSelected());
+					current.writeBoolean(chckbxScience.isSelected());
+					current.writeBoolean(chckbxGeography.isSelected());
+					current.writeBoolean(chckbxFrench.isSelected());
+					current.writeBoolean(chckbxFiFrench.isSelected());
+					current.writeBoolean(chckbxFiScience.isSelected());
+					current.writeBoolean(chckbxFiGeography.isSelected());
+					
+					current.writeUTF(textField_2.getText());
+					
+					//grade 10
+					current.writeBoolean(checkBox.isSelected());
+					current.writeBoolean(checkBox_2.isSelected());
+					current.writeBoolean(checkBox_4.isSelected());
+					current.writeBoolean(chckbxHistory.isSelected());
+					current.writeBoolean(chckbxFrench_1.isSelected());
+					current.writeBoolean(chckbxFiFrench_1.isSelected());
+					current.writeBoolean(chckbxFiScience_1.isSelected());
+					current.writeBoolean(chckbxFiHistory.isSelected());
+					current.writeUTF(textField_3.getText());
+					
+					//grade 11
+					current.writeBoolean(checkBox_1.isSelected());
+					current.writeBoolean(checkBox_3.isSelected());
+					current.writeBoolean(chckbxBiology.isSelected());
+					current.writeBoolean(chckbxChemistry.isSelected());
+					current.writeBoolean(chckbxPhysics.isSelected());
+					current.writeBoolean(chckbxFrench_2.isSelected());
+					current.writeBoolean(chckbxFiFrench_2.isSelected());
+					current.writeBoolean(chckbxPreApBiology.isSelected());
+					current.writeBoolean(chckbxPreApMath.isSelected());
+					current.writeUTF(textField_4.getText());
+					
+					current.close();
+					setVisible(false);
+					dispose();
+					
+					
+				} catch (IOException e1) {
+					
+				}
+				
+			}
+		});
 		contentPane.add(btnAddTutor, "cell 4 24");
 	}
 
