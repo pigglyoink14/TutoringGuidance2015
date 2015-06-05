@@ -51,6 +51,11 @@ public class Main extends JFrame {
 		contentPane.add(btnNewButton, "cell 1 3");
 		
 		JButton btnNewButton_1 = new JButton("Find Tutor");
+                btnNewButton_1.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent arg0){
+                        findTutor ft = new findTutor();
+                    }
+                });
 		contentPane.add(btnNewButton_1, "cell 3 3");
 		
 		JButton btnNewButton_2 = new JButton("Delete Tutor");

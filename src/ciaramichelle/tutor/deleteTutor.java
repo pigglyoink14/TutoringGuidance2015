@@ -27,10 +27,10 @@ public class deleteTutor extends JFrame implements ActionListener {
 
     private JPanel contentPane;
     private GridBagLayout baglayout = new GridBagLayout();
-    private JLabel firstName, lastName; 
+    private JLabel firstName, lastName;
     private JTextField fnField, lnField;
     private JButton delButton, backButton;
-    
+
     private String searchString;
 
     /**
@@ -87,21 +87,37 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.insets = new Insets(0, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fnField = new JTextField();
-        fnField.getDocument().addDocumentListener(new DocumentListener(){
-            public void changedUpdate(DocumentEvent e){
+        fnField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
             }
-            public void removeUpdate(DocumentEvent e){
+
+            public void removeUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
             }
-            public void insertUpdate(DocumentEvent e){
+
+            public void insertUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
             }
         });
+        ((AbstractDocument) fnField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                int currentLength = fb.getDocument().getLength();
+                int overLimit = (currentLength + text.length()) - 15 - length; //15 is limit
+                if (overLimit > 0) {
+                    text = text.substring(0, text.length() - overLimit);
+                }
+                if (text.length() > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        }
+        );
         
         
         contentPane.add(fnField, gbc);
-        
+
         //last name
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -124,36 +140,39 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.insets = new Insets(0, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         lnField = new JTextField();
-        lnField.getDocument().addDocumentListener(new DocumentListener(){
-            public void changedUpdate(DocumentEvent e){
+        lnField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
                 System.out.println(lnField.getDocument().getLength());
-                if(lnField.getDocument().getLength() > 15)
+                if (lnField.getDocument().getLength() > 15) {
                     lnField.setText(lnField.getText().substring(0, lnField.getDocument().getLength() - 1));
+                }
             }
-            public void removeUpdate(DocumentEvent e){
+
+            public void removeUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
             }
-            public void insertUpdate(DocumentEvent e){
+
+            public void insertUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
             }
         });
-        ((AbstractDocument)lnField.getDocument()).setDocumentFilter(new DocumentFilter(){
+        ((AbstractDocument) lnField.getDocument()).setDocumentFilter(new DocumentFilter() {
             @Override
-            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException{
-                        int currentLength = fb.getDocument().getLength();
-              int overLimit = (currentLength + text.length()) - 15 - length; //15 is limit
-            if (overLimit > 0) {
-                text = text.substring(0, text.length() - overLimit);
-            }
-            if (text.length() > 0) {
-                super.replace(fb, offset, length, text, attrs); 
-            }
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                int currentLength = fb.getDocument().getLength();
+                int overLimit = (currentLength + text.length()) - 15 - length; //15 is limit
+                if (overLimit > 0) {
+                    text = text.substring(0, text.length() - overLimit);
+                }
+                if (text.length() > 0) {
+                    super.replace(fb, offset, length, text, attrs);
+                }
             }
         }
-);
+        );
         contentPane.add(lnField, gbc);
-        
+
         //delete button settings
         gbc.gridx = 2;
         gbc.gridy = 5;
@@ -182,27 +201,25 @@ public class deleteTutor extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("delete")) {
             //use last name to search for first
-            //searchString = lnField.getText().trim() + " " + fnField.getText().trim();
-            //searchString = String.format(lnField.getText(), "%1$15s");
-            searchString = String.format("%-15s", searchString);
+            searchString = String.format("%-15s", lnField.getText().substring(0, Math.min(lnField.getText().length(), 15)));
             System.out.println(searchString);
             System.out.println(searchString.length());
             /*try {
-                //raf the file
-                RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
-                //insert binary searching here - get index
-                int i = 32;
-                raf.seek(i + 152);
-                //store one record over bytes into a type
-                byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
-                raf.readFully(temp);
-                //remove 152 bytes of data
-                raf.setLength(i);
-                raf.write(temp);
-                raf.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }*/
+             //raf the file
+             RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
+             //insert binary searching here - get index
+             int i = 32;
+             raf.seek(i + 152);
+             //store one record over bytes into a type
+             byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
+             raf.readFully(temp);
+             //remove 152 bytes of data
+             raf.setLength(i);
+             raf.write(temp);
+             raf.close();
+             } catch (IOException ex) {
+             ex.printStackTrace();
+             }*/
         } else if (e.getActionCommand().equals("back")) {
             System.out.println("Go Back");
             //open main window
@@ -210,15 +227,15 @@ public class deleteTutor extends JFrame implements ActionListener {
             dispose();
         }
     }
-    
-    public void textfieldEditor(JTextField j){
+
+    public void textfieldEditor(JTextField j) {
         //check if fields are filled and enable/disable the delete button accordingly
-            if((lnField.getText() != null && !lnField.getText().equals("")) && (fnField.getText() != null && !fnField.getText().equals("")))
-                delButton.setEnabled(true);
-            else
-                if(delButton.isEnabled())
-                    delButton.setEnabled(false);
-            //limit characters to type
+        if ((lnField.getText() != null && !lnField.getText().equals("")) && (fnField.getText() != null && !fnField.getText().equals(""))) {
+            delButton.setEnabled(true);
+        } else if (delButton.isEnabled()) {
+            delButton.setEnabled(false);
+        }
+        //limit characters to type
     }
 
 }

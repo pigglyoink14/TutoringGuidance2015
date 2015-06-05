@@ -56,7 +56,7 @@ public class findTutor extends JFrame {
 		JLabel lblFirstName = new JLabel("First Name");
 		contentPane.add(lblFirstName, "cell 1 0");
 		
-		lblLastName = new JLabel("Last NAme");
+		lblLastName = new JLabel("Last Name");
 		contentPane.add(lblLastName, "cell 2 0");
 		
 		textField = new JTextField();
@@ -76,7 +76,7 @@ public class findTutor extends JFrame {
 		chckbxPeriod_2 = new JCheckBox("Period 3");
 		contentPane.add(chckbxPeriod_2, "cell 1 4");
 		
-		chckbxPeriod_3 = new JCheckBox("PEriod 4");
+		chckbxPeriod_3 = new JCheckBox("Period 4");
 		contentPane.add(chckbxPeriod_3, "cell 2 4");
 		
 		chckbxPeriod_4 = new JCheckBox("Period 5");
@@ -179,6 +179,8 @@ public class findTutor extends JFrame {
 		
 		JButton btnNewButton = new JButton("Find Tutor");
 		contentPane.add(btnNewButton, "cell 3 26");
+                
+                setVisible(true);
 		
 	}
 
