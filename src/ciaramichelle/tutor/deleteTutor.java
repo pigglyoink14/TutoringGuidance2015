@@ -17,6 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.DocumentFilter.FilterBypass;
 
 public class deleteTutor extends JFrame implements ActionListener {
 
@@ -51,7 +56,7 @@ public class deleteTutor extends JFrame implements ActionListener {
 
         //frame settings
         setTitle("Delete Tutors");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -93,6 +98,8 @@ public class deleteTutor extends JFrame implements ActionListener {
                 textfieldEditor(lnField);
             }
         });
+        
+        
         contentPane.add(fnField, gbc);
         
         //last name
@@ -120,6 +127,9 @@ public class deleteTutor extends JFrame implements ActionListener {
         lnField.getDocument().addDocumentListener(new DocumentListener(){
             public void changedUpdate(DocumentEvent e){
                 textfieldEditor(lnField);
+                System.out.println(lnField.getDocument().getLength());
+                if(lnField.getDocument().getLength() > 15)
+                    lnField.setText(lnField.getText().substring(0, lnField.getDocument().getLength() - 1));
             }
             public void removeUpdate(DocumentEvent e){
                 textfieldEditor(lnField);
@@ -128,6 +138,20 @@ public class deleteTutor extends JFrame implements ActionListener {
                 textfieldEditor(lnField);
             }
         });
+        ((AbstractDocument)lnField.getDocument()).setDocumentFilter(new DocumentFilter(){
+            @Override
+            public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException{
+                        int currentLength = fb.getDocument().getLength();
+              int overLimit = (currentLength + text.length()) - 15 - length; //15 is limit
+            if (overLimit > 0) {
+                text = text.substring(0, text.length() - overLimit);
+            }
+            if (text.length() > 0) {
+                super.replace(fb, offset, length, text, attrs); 
+            }
+            }
+        }
+);
         contentPane.add(lnField, gbc);
         
         //delete button settings
@@ -151,25 +175,39 @@ public class deleteTutor extends JFrame implements ActionListener {
         contentPane.add(backButton, gbc);
 
         setVisible(true);
-        
+        //%1$15s
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("delete")) {
             //use last name to search for first
-            searchString = lnField.getText().trim();
-            try {
+            //searchString = lnField.getText().trim() + " " + fnField.getText().trim();
+            //searchString = String.format(lnField.getText(), "%1$15s");
+            searchString = String.format("%-15s", searchString);
+            System.out.println(searchString);
+            System.out.println(searchString.length());
+            /*try {
                 //raf the file
                 RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
                 //insert binary searching here - get index
+                int i = 32;
+                raf.seek(i + 152);
+                //store one record over bytes into a type
+                byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
+                raf.readFully(temp);
                 //remove 152 bytes of data
+                raf.setLength(i);
+                raf.write(temp);
                 raf.close();
             } catch (IOException ex) {
                 ex.printStackTrace();
-            }
+            }*/
         } else if (e.getActionCommand().equals("back")) {
             System.out.println("Go Back");
+            //open main window
+            //dispose of this window
+            dispose();
         }
     }
     
