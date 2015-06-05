@@ -10,6 +10,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
 
 public class findTutor extends JFrame {
 
@@ -46,11 +47,11 @@ public class findTutor extends JFrame {
 	 */
 	public findTutor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 507);
+		setBounds(100, 100, 450, 529);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][][][][][][][][][][][][][][][][][][][][][][][]"));
+		contentPane.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
 		
 		JLabel lblFirstName = new JLabel("First Name");
 		contentPane.add(lblFirstName, "cell 1 0");
@@ -175,6 +176,9 @@ public class findTutor extends JFrame {
 		
 		JCheckBox chckbxPreApMath = new JCheckBox("Pre AP Math");
 		contentPane.add(chckbxPreApMath, "cell 3 25");
+		
+		JButton btnNewButton = new JButton("Find Tutor");
+		contentPane.add(btnNewButton, "cell 3 26");
 		
 	}
 
