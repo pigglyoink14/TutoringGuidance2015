@@ -45,6 +45,7 @@ public class Main extends JFrame {
 		JButton btnNewButton = new JButton("Add Tutor");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+                            addTutor at = new addTutor();
 			}
 		});
 		contentPane.add(btnNewButton, "cell 1 3");
