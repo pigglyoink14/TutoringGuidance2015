@@ -319,5 +319,6 @@ public class addTutor extends JFrame {
             }
         });
         contentPane.add(btnAddTutor, "cell 4 24");
+        setVisible(true);
     }
 }
