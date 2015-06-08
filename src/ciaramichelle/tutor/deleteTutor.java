@@ -225,6 +225,7 @@ public class deleteTutor extends JFrame implements ActionListener {
             //open main window
             //dispose of this window
             dispose();
+            
         }
     }
 
