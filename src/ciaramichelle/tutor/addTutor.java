@@ -1,3 +1,5 @@
+//ciara
+
 package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
@@ -96,9 +98,6 @@ public class addTutor extends JFrame {
 
 		JCheckBox chckbxPeriod_4 = new JCheckBox("Period 5");
 		contentPane.add(chckbxPeriod_4, "cell 4 4");
-
-		JCheckBox chckbxAfterSchool = new JCheckBox("After School");
-		contentPane.add(chckbxAfterSchool, "cell 0 5");
 		
 		JLabel lblDaysAvailable_1 = new JLabel("Days Available After School");
 		contentPane.add(lblDaysAvailable_1, "cell 0 7 2 1");
@@ -135,9 +134,6 @@ public class addTutor extends JFrame {
 
 		JCheckBox checkBox_9 = new JCheckBox("Period 5");
 		contentPane.add(checkBox_9, "cell 4 11");
-
-		JCheckBox checkBox_10 = new JCheckBox("After School");
-		contentPane.add(checkBox_10, "cell 0 12");
 
 		JLabel lblDaysAvailable = new JLabel("Days Available After School");
 		contentPane.add(lblDaysAvailable, "cell 0 14 2 1");
@@ -273,12 +269,12 @@ public class addTutor extends JFrame {
 						String textFieldText = textField.getText();
 
 						current.writeUTF(String.format(
-								"%-s15",
+								"%-15s",
 								textFieldText.substring(0,
 										Math.min(textFieldText.length(), 15))));
 						textFieldText = textField_1.getText();
 						current.writeUTF(String.format(
-								"%-s15",
+								"%-15s",
 								textFieldText.substring(0,
 										Math.min(textFieldText.length(), 15))));
 						current.writeInt((int) comboBox.getItemAt(comboBox
@@ -288,13 +284,18 @@ public class addTutor extends JFrame {
 						current.writeBoolean(chckbxPeriod_2.isSelected());
 						current.writeBoolean(chckbxPeriod_3.isSelected());
 						current.writeBoolean(chckbxPeriod_4.isSelected());
-						current.writeBoolean(chckbxAfterSchool.isSelected());
+						current.writeBoolean(chckbxMonday_1.isSelected());
+						current.writeBoolean(chckbxTuesday_1.isSelected());
+						current.writeBoolean(chckbxWednesday_1.isSelected());
+						current.writeBoolean(chckbxThursday_1.isSelected());
+						current.writeBoolean(chckbxFriday_1.isSelected());
+						
 						current.writeBoolean(checkBox_5.isSelected());
 						current.writeBoolean(checkBox_6.isSelected());
 						current.writeBoolean(checkBox_7.isSelected());
 						current.writeBoolean(checkBox_8.isSelected());
 						current.writeBoolean(checkBox_9.isSelected());
-						current.writeBoolean(checkBox_10.isSelected());
+						
 						current.writeBoolean(chckbxMonday.isSelected());
 						current.writeBoolean(chckbxTuesday.isSelected());
 						current.writeBoolean(chckbxWednesday.isSelected());

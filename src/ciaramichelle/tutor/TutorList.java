@@ -1,3 +1,6 @@
+//michelle - code
+//ciara - gui
+
 package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
