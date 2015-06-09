@@ -1,7 +1,11 @@
 package ciaramichelle.tutor;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,6 +29,7 @@ public class findTutor extends JFrame {
 	private JCheckBox chckbxPeriod_4;
 	private JCheckBox chckbxAfterSchool;
 	private JLabel lblSubjects;
+        private ArrayList arb = new ArrayList();
 
 	/**
 	 * Launch the application.
@@ -178,6 +183,24 @@ public class findTutor extends JFrame {
 		contentPane.add(chckbxPreApMath, "cell 3 25");
 		
 		JButton btnNewButton = new JButton("Find Tutor");
+                btnNewButton.addActionListener(new ActionListener(){
+                    public void actionPerformed(ActionEvent arg0){
+                        try {
+                            //grab list of people if not initated
+                            RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
+                            //raf.
+                            for(int i = 0; i < raf.length() / 110; i++)
+                            if(arb.isEmpty() || arb.size() < raf.length() / 113){
+                                
+                                //arb.add(i, Integer.parseInt(Boolean.toString(raf.readBoolean() + Boolean.toString(raf.readBoolean()))));
+                            }
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                        
+                    }
+                });
 		contentPane.add(btnNewButton, "cell 3 26");
                 
                 setVisible(true);
