@@ -24,7 +24,7 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.DocumentFilter.FilterBypass;
 
 public class deleteTutor extends JFrame implements ActionListener {
-
+    //records are 113 bytes
     private JPanel contentPane;
     private GridBagLayout baglayout = new GridBagLayout();
     private JLabel firstName, lastName;
@@ -204,22 +204,35 @@ public class deleteTutor extends JFrame implements ActionListener {
             searchString = String.format("%-15s", lnField.getText().substring(0, Math.min(lnField.getText().length(), 15)));
             System.out.println(searchString);
             System.out.println(searchString.length());
-            /*try {
+            try {
              //raf the file
              RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
-             //insert binary searching here - get index
-             int i = 32;
-             raf.seek(i + 152);
-             //store one record over bytes into a type
-             byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
-             raf.readFully(temp);
-             //remove 152 bytes of data
-             raf.setLength(i);
-             raf.write(temp);
+             //insert linear search to delete
+             int tempPointer;
+             int originLength = (int) (raf.length());
+             for(int i = 0; i < raf.length(); i += 113){
+                 raf.seek(i);
+                 String tempName = raf.readUTF() + raf.readUTF();
+                 if(tempName.equals(searchString)){
+                     tempPointer = i + 113;
+                     raf.seek(tempPointer);
+                    //store one record over bytes into a type
+                    byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
+                    raf.readFully(temp);
+                    //remove 152 bytes of data
+                    raf.setLength(tempPointer);
+                    raf.seek(raf.length()+1);
+                    raf.write(temp); 
+                    break;
+                 }
+             }
+             if(originLength == raf.length())
+                 System.out.println("No one of that name was found.");
              raf.close();
              } catch (IOException ex) {
              ex.printStackTrace();
-             }*/
+             }
+            
         } else if (e.getActionCommand().equals("back")) {
             System.out.println("Go Back");
             //open main window
@@ -236,7 +249,6 @@ public class deleteTutor extends JFrame implements ActionListener {
         } else if (delButton.isEnabled()) {
             delButton.setEnabled(false);
         }
-        //limit characters to type
     }
 
 }
