@@ -105,5 +105,6 @@ public class Main extends JFrame {
         });
         contentPane.add(btnNewButton_2, "cell 5 3");
     }
-
 }
+
+	
