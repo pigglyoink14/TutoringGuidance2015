@@ -40,18 +40,18 @@ public class Main extends JFrame {
                     int grade = raf.readInt();
                     if (grade == 12) {
                         long tutorPos = raf.getFilePointer() - 38;
-                        byte[] lastTutor = new byte[113];
-                        raf.seek(raf.length() - 113);
+                        byte[] lastTutor = new byte[153];
+                        raf.seek(raf.length() - 153);
                         raf.readFully(lastTutor);
                         raf.seek(tutorPos);
                         raf.write(lastTutor);
-                        raf.setLength(raf.length() - 113);
+                        raf.setLength(raf.length() - 153);
                         raf.seek(tutorPos);
 
                     } else if (grade == 11) {
                         raf.seek(raf.getFilePointer() - 4);
                         raf.writeInt(12);
-                        raf.seek(raf.getFilePointer() + 75);
+                        raf.seek(raf.getFilePointer() + 115);
 
                     }
 

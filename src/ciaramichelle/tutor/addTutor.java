@@ -276,9 +276,30 @@ public class addTutor extends JFrame {
                                 current.writeInt((int) comboBox.getItemAt(comboBox
                                         .getSelectedIndex()));
                                 current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
                                 current.writeBoolean(chckbxPeriod_1.isSelected());
                                 current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
                                 current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
                                 current.writeBoolean(chckbxPeriod_4.isSelected());
                                 current.writeBoolean(chckbxMonday_1.isSelected());
                                 current.writeBoolean(chckbxTuesday_1.isSelected());
@@ -287,9 +308,29 @@ public class addTutor extends JFrame {
                                 current.writeBoolean(chckbxFriday_1.isSelected());
 
                                 current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
                                 current.writeBoolean(checkBox_6.isSelected());
                                 current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
                                 current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
                                 current.writeBoolean(checkBox_9.isSelected());
 
                                 current.writeBoolean(chckbxMonday.isSelected());
@@ -345,7 +386,7 @@ public class addTutor extends JFrame {
                                 current.close();
 
                             } else {
-                                current.skipBytes(83);
+                                current.skipBytes(123);
                             }
                         } catch (EOFException e) {
                            
