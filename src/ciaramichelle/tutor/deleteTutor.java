@@ -1,3 +1,5 @@
+//code - michelle
+//gui - ciara
 package ciaramichelle.tutor;
 
 import java.awt.EventQueue;
