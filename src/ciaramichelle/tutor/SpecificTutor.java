@@ -308,8 +308,8 @@ public class SpecificTutor extends JFrame {
 		
 		JButton btnNewButton_59 = new JButton("New button");
 		contentPane.add(btnNewButton_59, "cell 5 19");
-		
-		
+                
+				
 	}
 
 }
