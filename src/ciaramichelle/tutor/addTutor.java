@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -261,101 +262,228 @@ public class addTutor extends JFrame {
         contentPane.add(textField_4, "cell 2 28 2 1,growx");
 
         JButton btnAddTutor = new JButton("Add Tutor");
-        btnAddTutor.addActionListener((ActionEvent arg0) -> {
-            try {
-                RandomAccessFile current = new RandomAccessFile("binary.dat",
-                        "rw");
-                String textFieldText = textField.getText();
+        btnAddTutor.addActionListener(new ActionListener() {
 
-                current.writeUTF(String.format(
-                        "%-15s",
-                        textFieldText.substring(0,
-                                Math.min(textFieldText.length(), 15))));
-                textFieldText = textField_1.getText();
-                current.writeUTF(String.format(
-                        "%-15s",
-                        textFieldText.substring(0,
-                                Math.min(textFieldText.length(), 15))));
-                current.writeInt((int) comboBox.getItemAt(comboBox
-                        .getSelectedIndex()));
-                current.writeBoolean(chckbxPeriod.isSelected());
-                current.writeBoolean(chckbxPeriod_1.isSelected());
-                current.writeBoolean(chckbxPeriod_2.isSelected());
-                current.writeBoolean(chckbxPeriod_3.isSelected());
-                current.writeBoolean(chckbxPeriod_4.isSelected());
-                current.writeBoolean(chckbxMonday_1.isSelected());
-                current.writeBoolean(chckbxTuesday_1.isSelected());
-                current.writeBoolean(chckbxWednesday_1.isSelected());
-                current.writeBoolean(chckbxThursday_1.isSelected());
-                current.writeBoolean(chckbxFriday_1.isSelected());
+            public void actionPerformed(ActionEvent arg0) {
+                try {
 
-                current.writeBoolean(checkBox_5.isSelected());
-                current.writeBoolean(checkBox_6.isSelected());
-                current.writeBoolean(checkBox_7.isSelected());
-                current.writeBoolean(checkBox_8.isSelected());
-                current.writeBoolean(checkBox_9.isSelected());
+                    RandomAccessFile current = new RandomAccessFile("binary.dat",
+                            "rw");
+                    while (true) {
+                        try {
+                            if (current.readUTF().equalsIgnoreCase(textField.getText()) && current.readUTF().equalsIgnoreCase(textField_1.getText())) {
+                                String textFieldText = textField.getText();
+                                current.writeInt((int) comboBox.getItemAt(comboBox
+                                        .getSelectedIndex()));
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxMonday_1.isSelected());
+                                current.writeBoolean(chckbxTuesday_1.isSelected());
+                                current.writeBoolean(chckbxWednesday_1.isSelected());
+                                current.writeBoolean(chckbxThursday_1.isSelected());
+                                current.writeBoolean(chckbxFriday_1.isSelected());
 
-                current.writeBoolean(chckbxMonday.isSelected());
-                current.writeBoolean(chckbxTuesday.isSelected());
-                current.writeBoolean(chckbxWednesday.isSelected());
-                current.writeBoolean(chckbxThursday.isSelected());
-                current.writeBoolean(chckbxFriday.isSelected());
-                // grade nine
-                current.writeBoolean(chckbxNewCheckBox.isSelected());
-                current.writeBoolean(chckbxEnglish.isSelected());
-                current.writeBoolean(chckbxScience.isSelected());
-                current.writeBoolean(chckbxGeography.isSelected());
-                current.writeBoolean(chckbxFrench.isSelected());
-                current.writeBoolean(chckbxFiFrench.isSelected());
-                current.writeBoolean(chckbxFiScience.isSelected());
-                current.writeBoolean(chckbxFiGeography.isSelected());
-                textFieldText = textField_2.getText();
-                current.writeUTF(String.format(
-                        "%-8s",
-                        textFieldText.substring(0,
-                                Math.min(textFieldText.length(), 8))));
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
 
-                // grade 10
-                current.writeBoolean(checkBox.isSelected());
-                current.writeBoolean(checkBox_2.isSelected());
-                current.writeBoolean(checkBox_4.isSelected());
-                current.writeBoolean(chckbxHistory.isSelected());
-                current.writeBoolean(chckbxFrench_1.isSelected());
-                current.writeBoolean(chckbxFiFrench_1.isSelected());
-                current.writeBoolean(chckbxFiScience_1.isSelected());
-                current.writeBoolean(chckbxFiHistory.isSelected());
-                textFieldText = textField_3.getText();
-                current.writeUTF(String.format(
-                        "%-8s",
-                        textFieldText.substring(0,
-                                Math.min(textFieldText.length(), 8))));
+                                current.writeBoolean(chckbxMonday.isSelected());
+                                current.writeBoolean(chckbxTuesday.isSelected());
+                                current.writeBoolean(chckbxWednesday.isSelected());
+                                current.writeBoolean(chckbxThursday.isSelected());
+                                current.writeBoolean(chckbxFriday.isSelected());
+                                // grade nine
+                                current.writeBoolean(chckbxNewCheckBox.isSelected());
+                                current.writeBoolean(chckbxEnglish.isSelected());
+                                current.writeBoolean(chckbxScience.isSelected());
+                                current.writeBoolean(chckbxGeography.isSelected());
+                                current.writeBoolean(chckbxFrench.isSelected());
+                                current.writeBoolean(chckbxFiFrench.isSelected());
+                                current.writeBoolean(chckbxFiScience.isSelected());
+                                current.writeBoolean(chckbxFiGeography.isSelected());
+                                textFieldText = textField_2.getText();
+                                current.writeUTF(String.format(
+                                        "%-8s",
+                                        textFieldText.substring(0,
+                                                Math.min(textFieldText.length(), 8))));
 
-                // grade 11
-                current.writeBoolean(checkBox_1.isSelected());
-                current.writeBoolean(checkBox_3.isSelected());
-                current.writeBoolean(chckbxBiology.isSelected());
-                current.writeBoolean(chckbxChemistry.isSelected());
-                current.writeBoolean(chckbxPhysics.isSelected());
-                current.writeBoolean(chckbxFrench_2.isSelected());
-                current.writeBoolean(chckbxFiFrench_2.isSelected());
-                current.writeBoolean(chckbxPreApBiology.isSelected());
-                current.writeBoolean(chckbxPreApMath.isSelected());
-                textFieldText = textField_4.getText();
-                current.writeUTF(String.format(
-                        "%-8s",
-                        textFieldText.substring(0,
-                                Math.min(textFieldText.length(), 8))));
+                                // grade 10
+                                current.writeBoolean(checkBox.isSelected());
+                                current.writeBoolean(checkBox_2.isSelected());
+                                current.writeBoolean(checkBox_4.isSelected());
+                                current.writeBoolean(chckbxHistory.isSelected());
+                                current.writeBoolean(chckbxFrench_1.isSelected());
+                                current.writeBoolean(chckbxFiFrench_1.isSelected());
+                                current.writeBoolean(chckbxFiScience_1.isSelected());
+                                current.writeBoolean(chckbxFiHistory.isSelected());
+                                textFieldText = textField_3.getText();
+                                current.writeUTF(String.format(
+                                        "%-8s",
+                                        textFieldText.substring(0,
+                                                Math.min(textFieldText.length(), 8))));
 
-                current.close();
-                setVisible(false);
-                dispose();
+                                // grade 11
+                                current.writeBoolean(checkBox_1.isSelected());
+                                current.writeBoolean(checkBox_3.isSelected());
+                                current.writeBoolean(chckbxBiology.isSelected());
+                                current.writeBoolean(chckbxChemistry.isSelected());
+                                current.writeBoolean(chckbxPhysics.isSelected());
+                                current.writeBoolean(chckbxFrench_2.isSelected());
+                                current.writeBoolean(chckbxFiFrench_2.isSelected());
+                                current.writeBoolean(chckbxPreApBiology.isSelected());
+                                current.writeBoolean(chckbxPreApMath.isSelected());
+                                textFieldText = textField_4.getText();
+                                current.writeUTF(String.format(
+                                        "%-8s",
+                                        textFieldText.substring(0,
+                                                Math.min(textFieldText.length(), 8))));
+                                current.close();
 
-            } catch (IOException e1) {
+                            } else {
+                                current.skipBytes(123);
+                            }
+                        } catch (EOFException e) {
+                           
+                            current.seek(current.length());
+                            String textFieldText = textField.getText();
 
+                            current.writeUTF(String.format(
+                                    "%-15s",
+                                    textFieldText.substring(0,
+                                            Math.min(textFieldText.length(), 15))));
+                            textFieldText = textField_1.getText();
+                            current.writeUTF(String.format(
+                                    "%-15s",
+                                    textFieldText.substring(0,
+                                            Math.min(textFieldText.length(), 15))));
+                            current.writeInt((int) comboBox.getItemAt(comboBox
+                                    .getSelectedIndex()));
+                            current.writeBoolean(chckbxPeriod.isSelected());
+                            current.writeBoolean(chckbxPeriod_1.isSelected());
+                            current.writeBoolean(chckbxPeriod_2.isSelected());
+                            current.writeBoolean(chckbxPeriod_3.isSelected());
+                            current.writeBoolean(chckbxPeriod_4.isSelected());
+                            current.writeBoolean(chckbxMonday_1.isSelected());
+                            current.writeBoolean(chckbxTuesday_1.isSelected());
+                            current.writeBoolean(chckbxWednesday_1.isSelected());
+                            current.writeBoolean(chckbxThursday_1.isSelected());
+                            current.writeBoolean(chckbxFriday_1.isSelected());
+
+                            current.writeBoolean(checkBox_5.isSelected());
+                            current.writeBoolean(checkBox_6.isSelected());
+                            current.writeBoolean(checkBox_7.isSelected());
+                            current.writeBoolean(checkBox_8.isSelected());
+                            current.writeBoolean(checkBox_9.isSelected());
+
+                            current.writeBoolean(chckbxMonday.isSelected());
+                            current.writeBoolean(chckbxTuesday.isSelected());
+                            current.writeBoolean(chckbxWednesday.isSelected());
+                            current.writeBoolean(chckbxThursday.isSelected());
+                            current.writeBoolean(chckbxFriday.isSelected());
+                            // grade nine
+                            current.writeBoolean(chckbxNewCheckBox.isSelected());
+                            current.writeBoolean(chckbxEnglish.isSelected());
+                            current.writeBoolean(chckbxScience.isSelected());
+                            current.writeBoolean(chckbxGeography.isSelected());
+                            current.writeBoolean(chckbxFrench.isSelected());
+                            current.writeBoolean(chckbxFiFrench.isSelected());
+                            current.writeBoolean(chckbxFiScience.isSelected());
+                            current.writeBoolean(chckbxFiGeography.isSelected());
+                            textFieldText = textField_2.getText();
+                            current.writeUTF(String.format(
+                                    "%-8s",
+                                    textFieldText.substring(0,
+                                            Math.min(textFieldText.length(), 8))));
+
+                            // grade 10
+                            current.writeBoolean(checkBox.isSelected());
+                            current.writeBoolean(checkBox_2.isSelected());
+                            current.writeBoolean(checkBox_4.isSelected());
+                            current.writeBoolean(chckbxHistory.isSelected());
+                            current.writeBoolean(chckbxFrench_1.isSelected());
+                            current.writeBoolean(chckbxFiFrench_1.isSelected());
+                            current.writeBoolean(chckbxFiScience_1.isSelected());
+                            current.writeBoolean(chckbxFiHistory.isSelected());
+                            textFieldText = textField_3.getText();
+                            current.writeUTF(String.format(
+                                    "%-8s",
+                                    textFieldText.substring(0,
+                                            Math.min(textFieldText.length(), 8))));
+
+                            // grade 11
+                            current.writeBoolean(checkBox_1.isSelected());
+                            current.writeBoolean(checkBox_3.isSelected());
+                            current.writeBoolean(chckbxBiology.isSelected());
+                            current.writeBoolean(chckbxChemistry.isSelected());
+                            current.writeBoolean(chckbxPhysics.isSelected());
+                            current.writeBoolean(chckbxFrench_2.isSelected());
+                            current.writeBoolean(chckbxFiFrench_2.isSelected());
+                            current.writeBoolean(chckbxPreApBiology.isSelected());
+                            current.writeBoolean(chckbxPreApMath.isSelected());
+                            textFieldText = textField_4.getText();
+                            current.writeUTF(String.format(
+                                    "%-8s",
+                                    textFieldText.substring(0,
+                                            Math.min(textFieldText.length(), 8))));
+
+                            current.close();
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+
+                } catch (IOException e1) {
+
+                }
             }
         });
         contentPane.add(btnAddTutor, "cell 4 31");
-        setVisible(true);
     }
 
 }
