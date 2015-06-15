@@ -35,27 +35,12 @@ public class findTutor extends JFrame {
 	private JLabel lblSubjects;
         private ArrayList arb = new ArrayList();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					findTutor frame = new findTutor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public findTutor() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 538, 674);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -213,96 +198,97 @@ public class findTutor extends JFrame {
                 
                 btnNewButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent arg0){
+                        
                         HashSet<SearchByName> people = new HashSet<>();
                         try {
                             if(chckbxNewCheckBox.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 60));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 101));
                                 
                             }
                             if(chckbxEnglish.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 61));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 102));
                                 
                             }
                             if(chckbxScience.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 62));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 103));
                                 
                             }
                             if(chckbxGeography.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 63));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 104));
                                 
                             }
                             if(chckbxFrench.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 64));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 105));
                                 
                             }
                             if(chckbxFiFrench.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 65));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 106));
                                 
                             }
                             if(checkBox.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 66));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 107));
                                 
                             }
                             if(checkBox_2.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 67));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 108));
                                 
                             }
                             if(checkBox_4.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 68));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 109));
                                 
                             }
                             if(chckbxHistory.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 69));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 110));
                                 
                             }
                             if(chckbxFrench_1.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 70));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 111));
                                 
                             }if(chckbxFiFrench_1.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 71));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 112));
                                 
                             }
                             if(chckbxFiScience_1.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 72));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 113));
                                 
                             }
                             if(chckbxFiHistory.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 73));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 114));
                                 
                             }
                             if(checkBox_1.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 74));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 115));
                                 
                             }
                             if(checkBox_3.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 75));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 116));
                                 
                             }if(chckbxBiology.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 76));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 117));
                                 
                             }
                             if(chckbxChemistry.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 77));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 118));
                                 
                             }
                             if(chckbxPhysics.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 78));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 119));
                                 
                             }
                             if(chckbxFrench_2.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 79));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 120));
                                 
                             }
                             if(chckbxFiFrench_2.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 80));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 121));
                                 
                             }
                             if(chckbxPreApBiology.isSelected()){
-                               people.addAll(SearchByName.searchBySubject("binary.dat", 81));
+                               people.addAll(SearchByName.searchBySubject("binary.dat", 122));
                                 
                             }
                             if(chckbxPreApMath.isSelected()){
-                                people.addAll(SearchByName.searchBySubject("binary.dat", 82));
+                                people.addAll(SearchByName.searchBySubject("binary.dat", 123));
                                 
                             }
                             ArrayList<SearchByName> finalPeople = new ArrayList<>();
@@ -393,6 +379,12 @@ public class findTutor extends JFrame {
                                 
                             }
                             TutorList stuff = new TutorList(finalPeople);
+                            System.out.println(finalPeople.get(0).firstName);
+                            System.out.println(finalPeople.get(0).lastName);
+                            System.out.println(finalPeople.get(0).grade);
+                            System.out.println(finalPeople.get(0).semOnePerOne);
+                            System.out.println(finalPeople.get(0).semOnePerTwo);
+                            System.out.println(finalPeople.get(0).semOnePerThree);
                             
                         } catch (IOException ex) {
                             ex.printStackTrace();
