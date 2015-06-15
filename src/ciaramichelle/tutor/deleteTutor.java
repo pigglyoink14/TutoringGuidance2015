@@ -214,7 +214,7 @@ public class deleteTutor extends JFrame implements ActionListener {
              for(int i = 0; i < raf.length(); i += 113){
                  raf.seek(i);
                  String tempName = raf.readUTF() + raf.readUTF();
-                 if(tempName.equals(searchString)){
+                 if(tempName.equalsIgnoreCase(searchString)){
                      tempPointer = i + 113;
                      raf.seek(tempPointer);
                     //store one record over bytes into a type

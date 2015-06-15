@@ -5,6 +5,7 @@ package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -38,7 +39,11 @@ public class TutorList extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TutorList() {
+	public TutorList(ArrayList<SearchByName> stuffOne) {
+            
+            
+            
+            
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -51,24 +56,14 @@ public class TutorList extends JFrame {
 		
 		table = new JTable();
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
-			}
-		));
+                tableModel stuff = new tableModel(stuffOne);
+		table.setModel(stuff);
 		scrollPane.setViewportView(table);
                 setVisible(true);
 	}
+
+    private TutorList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
