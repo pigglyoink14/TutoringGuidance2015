@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.util.HashSet;
 
 public class findTutor extends JFrame {
 
@@ -212,7 +213,7 @@ public class findTutor extends JFrame {
                 
                 btnNewButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent arg0){
-                        ArrayList<SearchByName> people = new ArrayList<>();
+                        HashSet<SearchByName> people = new HashSet<>();
                         try {
                             if(chckbxNewCheckBox.isSelected()){
                                people.addAll(SearchByName.searchBySubject("binary.dat", 60));
@@ -305,93 +306,93 @@ public class findTutor extends JFrame {
                                 
                             }
                             ArrayList<SearchByName> finalPeople = new ArrayList<>();
-                            for(int i=0; i < people.size(); i++){
+                            for(SearchByName person: people){
                                 if(chckbxSemester.isSelected()){
-                                    if(chckbxPeriod.isSelected() && people.get(i).semOnePerOne){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod.isSelected() && person.semOnePerOne){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_1.isSelected() && people.get(i).semOnePerTwo){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_1.isSelected() && person.semOnePerTwo){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_2.isSelected() && people.get(i).semOnePerThree){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_2.isSelected() && person.semOnePerThree){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_3.isSelected() && people.get(i).semOnePerFour){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_3.isSelected() && person.semOnePerFour){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_4.isSelected() && people.get(i).semOnePerFive){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_4.isSelected() && person.semOnePerFive){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxMonday.isSelected() && people.get(i).semOneMonday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxMonday.isSelected() && person.semOneMonday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxTuesday.isSelected() && people.get(i).semOneTuesday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxTuesday.isSelected() && person.semOneTuesday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxWednesday.isSelected() && people.get(i).semOneWednesday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxWednesday.isSelected() && person.semOneWednesday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxThursday.isSelected() && people.get(i).semOneThursday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxThursday.isSelected() && person.semOneThursday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxFriday.isSelected() && people.get(i).semOneFriday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxFriday.isSelected() && person.semOneFriday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
                                 }else{
-                                    if(chckbxPeriod.isSelected() && people.get(i).semTwoPerOne){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod.isSelected() && person.semTwoPerOne){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_1.isSelected() && people.get(i).semTwoPerTwo){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_1.isSelected() && person.semTwoPerTwo){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_2.isSelected() && people.get(i).semTwoPerThree){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_2.isSelected() && person.semTwoPerThree){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_3.isSelected() && people.get(i).semTwoPerFour){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_3.isSelected() && person.semTwoPerFour){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxPeriod_4.isSelected() && people.get(i).semTwoPerFive){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxPeriod_4.isSelected() && person.semTwoPerFive){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxMonday.isSelected() && people.get(i).semTwoMonday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxMonday.isSelected() && person.semTwoMonday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxTuesday.isSelected() && people.get(i).semTwoTuesday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxTuesday.isSelected() && person.semTwoTuesday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxWednesday.isSelected() && people.get(i).semTwoWednesday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxWednesday.isSelected() && person.semTwoWednesday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxThursday.isSelected() && people.get(i).semTwoThursday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxThursday.isSelected() && person.semTwoThursday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
-                                    if(chckbxFriday.isSelected() && people.get(i).semTwoFriday){
-                                        finalPeople.add(people.get(i));
+                                    if(chckbxFriday.isSelected() && person.semTwoFriday){
+                                        finalPeople.add(person);
                                         continue;
                                     }
                                 }
                                 
                             }
-                            
+                            TutorList stuff = new TutorList(finalPeople);
                             
                         } catch (IOException ex) {
                             ex.printStackTrace();

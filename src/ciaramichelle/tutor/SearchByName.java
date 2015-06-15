@@ -7,7 +7,9 @@ import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -156,6 +158,80 @@ public class SearchByName {
 
                 }
     }
+    public static ArrayList<SearchByName> searchBySubject(String file, int position) throws FileNotFoundException, IOException{
+            
+        
+        RandomAccessFile into = new RandomAccessFile("binary.dat", "rw");
+        into.seek(position);
+        ArrayList<SearchByName> persons = new ArrayList<>();
+                while (true) {
+                    try {
+                        if (into.readBoolean() == true) {
+                            into.seek(into.getFilePointer()-(position+1));
+                            SearchByName person = new SearchByName(into.readUTF(), into.readUTF(), into.readInt(), into.readBoolean(), into.readBoolean(), 
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean());
+                            persons.add(person);
+                            
+                            
+                        } else {
+                            into.skipBytes(152);
+                        }
+                    } catch (EOFException e) {
+                        System.out.println("sorry the name you are looking for does not exist");
+                        into.close();
+                        return null;
+                    }
+                    catch (FileNotFoundException j){
+                        System.out.println("sorry the file you are looking for does not exist");
+                        return null;
+                    }
+                    catch (IOException k){
+                        System.out.println("sorry there was an IO error, please try again");
+                        return null;
+                    }
+                    return persons;
+
+                }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 43 * hash + Objects.hashCode(this.firstName);
+        hash = 43 * hash + Objects.hashCode(this.lastName);
+        hash = 43 * hash + this.grade;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SearchByName other = (SearchByName) obj;
+        if (!Objects.equals(this.firstName, other.firstName)) {
+            return false;
+        }
+        if (!Objects.equals(this.lastName, other.lastName)) {
+            return false;
+        }
+        if (this.grade != other.grade) {
+            return false;
+        }
+        return true;
+    }
+ 
 }
     
     

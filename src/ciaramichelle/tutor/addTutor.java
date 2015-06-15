@@ -28,9 +28,6 @@ public class addTutor extends JFrame {
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
-    private JTextField textField_2;
-    private JTextField textField_3;
-    private JTextField textField_4;
 
     /**
      * Launch the application.
@@ -240,27 +237,6 @@ public class addTutor extends JFrame {
         JCheckBox chckbxPreApBiology = new JCheckBox("Pre AP BIology");
         contentPane.add(chckbxPreApBiology, "cell 2 26");
 
-        JLabel lblOther = new JLabel("Other:");
-        contentPane.add(lblOther, "cell 0 27");
-
-        JLabel label = new JLabel("Other:");
-        contentPane.add(label, "cell 1 27");
-
-        JLabel label_1 = new JLabel("Other:");
-        contentPane.add(label_1, "cell 2 27");
-
-        textField_2 = new JTextField();
-        contentPane.add(textField_2, "cell 0 28,growx");
-        textField_2.setColumns(10);
-
-        textField_3 = new JTextField();
-        textField_3.setColumns(10);
-        contentPane.add(textField_3, "cell 1 28,growx");
-
-        textField_4 = new JTextField();
-        textField_4.setColumns(10);
-        contentPane.add(textField_4, "cell 2 28 2 1,growx");
-
         JButton btnAddTutor = new JButton("Add Tutor");
         btnAddTutor.addActionListener(new ActionListener() {
 
@@ -347,11 +323,8 @@ public class addTutor extends JFrame {
                                 current.writeBoolean(chckbxFiFrench.isSelected());
                                 current.writeBoolean(chckbxFiScience.isSelected());
                                 current.writeBoolean(chckbxFiGeography.isSelected());
-                                textFieldText = textField_2.getText();
-                                current.writeUTF(String.format(
-                                        "%-8s",
-                                        textFieldText.substring(0,
-                                                Math.min(textFieldText.length(), 8))));
+                            
+                             
 
                                 // grade 10
                                 current.writeBoolean(checkBox.isSelected());
@@ -362,11 +335,7 @@ public class addTutor extends JFrame {
                                 current.writeBoolean(chckbxFiFrench_1.isSelected());
                                 current.writeBoolean(chckbxFiScience_1.isSelected());
                                 current.writeBoolean(chckbxFiHistory.isSelected());
-                                textFieldText = textField_3.getText();
-                                current.writeUTF(String.format(
-                                        "%-8s",
-                                        textFieldText.substring(0,
-                                                Math.min(textFieldText.length(), 8))));
+                                
 
                                 // grade 11
                                 current.writeBoolean(checkBox_1.isSelected());
@@ -378,11 +347,7 @@ public class addTutor extends JFrame {
                                 current.writeBoolean(chckbxFiFrench_2.isSelected());
                                 current.writeBoolean(chckbxPreApBiology.isSelected());
                                 current.writeBoolean(chckbxPreApMath.isSelected());
-                                textFieldText = textField_4.getText();
-                                current.writeUTF(String.format(
-                                        "%-8s",
-                                        textFieldText.substring(0,
-                                                Math.min(textFieldText.length(), 8))));
+                               
                                 current.close();
 
                             } else {
@@ -435,11 +400,7 @@ public class addTutor extends JFrame {
                             current.writeBoolean(chckbxFiFrench.isSelected());
                             current.writeBoolean(chckbxFiScience.isSelected());
                             current.writeBoolean(chckbxFiGeography.isSelected());
-                            textFieldText = textField_2.getText();
-                            current.writeUTF(String.format(
-                                    "%-8s",
-                                    textFieldText.substring(0,
-                                            Math.min(textFieldText.length(), 8))));
+                           
 
                             // grade 10
                             current.writeBoolean(checkBox.isSelected());
@@ -450,11 +411,7 @@ public class addTutor extends JFrame {
                             current.writeBoolean(chckbxFiFrench_1.isSelected());
                             current.writeBoolean(chckbxFiScience_1.isSelected());
                             current.writeBoolean(chckbxFiHistory.isSelected());
-                            textFieldText = textField_3.getText();
-                            current.writeUTF(String.format(
-                                    "%-8s",
-                                    textFieldText.substring(0,
-                                            Math.min(textFieldText.length(), 8))));
+                           
 
                             // grade 11
                             current.writeBoolean(checkBox_1.isSelected());
@@ -466,11 +423,7 @@ public class addTutor extends JFrame {
                             current.writeBoolean(chckbxFiFrench_2.isSelected());
                             current.writeBoolean(chckbxPreApBiology.isSelected());
                             current.writeBoolean(chckbxPreApMath.isSelected());
-                            textFieldText = textField_4.getText();
-                            current.writeUTF(String.format(
-                                    "%-8s",
-                                    textFieldText.substring(0,
-                                            Math.min(textFieldText.length(), 8))));
+                            
 
                             current.close();
                             setVisible(false);

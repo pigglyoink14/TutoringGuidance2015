@@ -57,6 +57,7 @@ public class Main extends JFrame {
 
                 } catch (EOFException e) {
                     raf.close();
+                    break;
                 }
 
             }
