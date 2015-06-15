@@ -17,6 +17,7 @@ public class SearchByName {
     String firstName;
     String lastName;
     int grade;
+    boolean[] chckbox = new boolean[44];
     boolean semOnePerOne;
     boolean semOnePerTwo;
     boolean semOnePerThree;
@@ -63,10 +64,13 @@ public class SearchByName {
     boolean greadeElevenPreAPBiology;
     boolean greadeElevenPreAPMath;
 
-    public SearchByName(String firstName, String lastName, int grade, boolean semOnePerOne, boolean semOnePerTwo, boolean semOnePerThree, boolean semOnePerFour, boolean semOnePerFive, boolean semOneMonday, boolean semOneTuesday, boolean semOneWednesday, boolean semOneThursday, boolean semOneFriday, boolean semTwoPerOne, boolean semTwoPerTwo, boolean semTwoPerThree, boolean semTwoPerFour, boolean semTwoPerFive, boolean semTwoMonday, boolean semTwoTuesday, boolean semTwoWednesday, boolean semTwoThursday, boolean semTwoFriday, boolean greadeNineMath, boolean greadeNineEnglish, boolean greadeNineScience, boolean greadeNineGeography, boolean greadeNineFrench, boolean greadeNineFIFrench, boolean greadeNineFIScience, boolean greadeNineFIGeography, boolean greadeTenMath, boolean greadeTenEnglish, boolean greadeTenScience, boolean greadeTenHistory, boolean greadeTenFrench, boolean greadeTenFIFrench, boolean greadeTenFIScience, boolean greadeTenFIHistory, boolean greadeElevenMath, boolean greadeElevenEnglish, boolean greadeElevenBiology, boolean greadeElevenChemistry, boolean greadeElevenPhysics, boolean greadeElevenFrench, boolean greadeElevenFIFrench, boolean greadeElevenPreAPBiology, boolean greadeElevenPreAPMath) {
+    public SearchByName(String firstName, String lastName, int grade, boolean[] checkbox) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.grade = grade;
+        for(int i = 0; i<chckbox.length; i++){
+            chckbox[i] = checkbox[i];
+        }
         this.semOnePerOne = semOnePerOne;
         this.semOnePerTwo = semOnePerTwo;
         this.semOnePerThree = semOnePerThree;
@@ -119,12 +123,12 @@ public class SearchByName {
 
     
     
-    public SearchByName searchByName(String file, String firstName, String lastName) throws FileNotFoundException, IOException{
-        DataInputStream into = new DataInputStream(new FileInputStream("employee.dat"));
+    public static SearchByName searchByName(String file, String firstName, String lastName) throws FileNotFoundException, IOException{
+        DataInputStream into = new DataInputStream(new FileInputStream("binary.dat"));
                 while (true) {
                     try {
                         if (into.readUTF().equalsIgnoreCase(firstName) && into.readUTF().equalsIgnoreCase(lastName)) {
-                            SearchByName person = new SearchByName(firstName, lastName, into.readInt(), into.readBoolean(), into.readBoolean(), 
+                            SearchByName person = new SearchByName(firstName, lastName, into.readInt(), new boolean[]{into.readBoolean(), into.readBoolean(), 
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
@@ -133,7 +137,7 @@ public class SearchByName {
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean());
+                                    into.readBoolean(), into.readBoolean(), into.readBoolean()});
                             into.close();
                             return person;
                             

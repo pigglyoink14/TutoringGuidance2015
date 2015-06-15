@@ -2,6 +2,7 @@
 package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -35,7 +36,7 @@ public class SpecificTutor extends JFrame {
 	 * Create the frame.
 	 */
 	public SpecificTutor() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 569, 496);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,7 +52,7 @@ public class SpecificTutor extends JFrame {
 		JLabel lblGrade = new JLabel("Grade:");
 		contentPane.add(lblGrade, "cell 5 0");
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("New label"); //filteredList.findTutor.getTutorTable().getSelectedRow()
 		contentPane.add(lblNewLabel, "cell 1 1");
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
@@ -87,6 +88,7 @@ public class SpecificTutor extends JFrame {
 		for(int i = 5; i < 11; i++){
 			for(int j = 1; j <6; j++){
 				buttons[counter] = new JButton("");
+                                buttons[counter].setBackground(Color.red);
 				contentPane.add(buttons[counter], "cell " + j + " " + i);
 				counter ++;
 			}
@@ -170,7 +172,7 @@ public class SpecificTutor extends JFrame {
 		JLabel lblAfterSchool_1 = new JLabel("After School");
 		contentPane.add(lblAfterSchool_1, "cell 0 19");
 		
-		
+		setVisible(true);
 	}
 
 }

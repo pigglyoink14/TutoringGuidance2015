@@ -68,6 +68,7 @@ public class TutorList extends JFrame {
 			}
 		));
 		scrollPane.setViewportView(table);
+                setVisible(true);
 	}
 
 }

@@ -275,6 +275,7 @@ public class addTutor extends JFrame {
                                 String textFieldText = textField.getText();
                                 current.writeInt((int) comboBox.getItemAt(comboBox
                                         .getSelectedIndex()));
+
                                 current.writeBoolean(chckbxPeriod.isSelected());
                                 current.writeBoolean(chckbxPeriod.isSelected());
                                 current.writeBoolean(chckbxPeriod.isSelected());
@@ -404,28 +405,69 @@ public class addTutor extends JFrame {
                                             Math.min(textFieldText.length(), 15))));
                             current.writeInt((int) comboBox.getItemAt(comboBox
                                     .getSelectedIndex()));
-                            current.writeBoolean(chckbxPeriod.isSelected());
-                            current.writeBoolean(chckbxPeriod_1.isSelected());
-                            current.writeBoolean(chckbxPeriod_2.isSelected());
-                            current.writeBoolean(chckbxPeriod_3.isSelected());
-                            current.writeBoolean(chckbxPeriod_4.isSelected());
-                            current.writeBoolean(chckbxMonday_1.isSelected());
-                            current.writeBoolean(chckbxTuesday_1.isSelected());
-                            current.writeBoolean(chckbxWednesday_1.isSelected());
-                            current.writeBoolean(chckbxThursday_1.isSelected());
-                            current.writeBoolean(chckbxFriday_1.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_1.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_2.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_3.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxPeriod_4.isSelected());
+                                current.writeBoolean(chckbxMonday_1.isSelected());
+                                current.writeBoolean(chckbxTuesday_1.isSelected());
+                                current.writeBoolean(chckbxWednesday_1.isSelected());
+                                current.writeBoolean(chckbxThursday_1.isSelected());
+                                current.writeBoolean(chckbxFriday_1.isSelected());
 
-                            current.writeBoolean(checkBox_5.isSelected());
-                            current.writeBoolean(checkBox_6.isSelected());
-                            current.writeBoolean(checkBox_7.isSelected());
-                            current.writeBoolean(checkBox_8.isSelected());
-                            current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_5.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_6.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_7.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_8.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
+                                current.writeBoolean(checkBox_9.isSelected());
 
-                            current.writeBoolean(chckbxMonday.isSelected());
-                            current.writeBoolean(chckbxTuesday.isSelected());
-                            current.writeBoolean(chckbxWednesday.isSelected());
-                            current.writeBoolean(chckbxThursday.isSelected());
-                            current.writeBoolean(chckbxFriday.isSelected());
+                                current.writeBoolean(chckbxMonday.isSelected());
+                                current.writeBoolean(chckbxTuesday.isSelected());
+                                current.writeBoolean(chckbxWednesday.isSelected());
+                                current.writeBoolean(chckbxThursday.isSelected());
+                                current.writeBoolean(chckbxFriday.isSelected());
                             // grade nine
                             current.writeBoolean(chckbxNewCheckBox.isSelected());
                             current.writeBoolean(chckbxEnglish.isSelected());
@@ -484,6 +526,7 @@ public class addTutor extends JFrame {
             }
         });
         contentPane.add(btnAddTutor, "cell 4 31");
+        setVisible(true);
     }
 
 }

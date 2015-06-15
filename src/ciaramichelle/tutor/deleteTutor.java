@@ -196,7 +196,6 @@ public class deleteTutor extends JFrame implements ActionListener {
         contentPane.add(backButton, gbc);
 
         setVisible(true);
-        //%1$15s
     }
 
     @Override
