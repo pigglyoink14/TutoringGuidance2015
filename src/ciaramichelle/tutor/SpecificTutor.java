@@ -4,6 +4,7 @@ package ciaramichelle.tutor;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,25 +18,10 @@ public class SpecificTutor extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SpecificTutor frame = new SpecificTutor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
+     * @param person filtered list
 	 */
-	public SpecificTutor() {
+	public SpecificTutor(SearchByName person) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 569, 496);
 		contentPane = new JPanel();
@@ -52,13 +38,13 @@ public class SpecificTutor extends JFrame {
 		JLabel lblGrade = new JLabel("Grade:");
 		contentPane.add(lblGrade, "cell 5 0");
 		
-		JLabel lblNewLabel = new JLabel("New label"); //filteredList.findTutor.getTutorTable().getSelectedRow()
+		JLabel lblNewLabel = new JLabel(person.firstName); 
 		contentPane.add(lblNewLabel, "cell 1 1");
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(person.lastName);
 		contentPane.add(lblNewLabel_1, "cell 3 1");
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_2 = new JLabel(String.valueOf(person.grade));
 		contentPane.add(lblNewLabel_2, "cell 5 1");
 		
 		JLabel lblSemesterOne = new JLabel("Semester One");
@@ -88,7 +74,15 @@ public class SpecificTutor extends JFrame {
 		for(int i = 5; i < 11; i++){
 			for(int j = 1; j <6; j++){
 				buttons[counter] = new JButton("");
-                                buttons[counter].setBackground(Color.red);
+                                if( (i == 1 && !person.semOnePerOne) || (i == 2 && !person.semOnePerTwo) || (i == 3 && !person.semOnePerThree) || (i == 4 && !person.semOnePerFour) 
+                                        || (i == 5 && !person.semOnePerFour || (j == 6 && (!person.semOneMonday || !person.semOneTuesday || !person.semOneWednesday || !person.semOneThursday || !person.semOneFriday)))){
+                                    buttons[counter].setEnabled(false);
+                                }
+                                if(!person.availiability[i + j])
+                                    buttons[counter].setBackground(Color.red);
+                                else if(buttons[counter].isEnabled())
+                                    buttons[counter].setBackground(Color.green);
+                                
 				contentPane.add(buttons[counter], "cell " + j + " " + i);
 				counter ++;
 			}
