@@ -26,8 +26,8 @@ public class Main extends JFrame {
     //ciara
     public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
         RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
-        //michelle - if file has no tutors in it
-        if (raf.length() > 153) {
+        //michelle - if file has no tutors in it + made year up to date
+        if (raf.length() > 90) { 
             int year = raf.readInt();
             String oldstring = year + "-09-01";
             Date dateNew = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
@@ -88,17 +88,23 @@ public class Main extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(new MigLayout("", "[][][]", "[][grow, fill][]"));
+        contentPane.setLayout(new MigLayout("", "[][][][][][]", "[][][][]"));
 
         JButton btnNewButton = new JButton("Add Tutor");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                addTutor at = new addTutor();
             }
         });
-        contentPane.add(btnNewButton, "cell 1 3, spanx");
+        contentPane.add(btnNewButton, "cell 1 3");
 
         JButton btnNewButton_1 = new JButton("Find Tutor");
-        contentPane.add(btnNewButton_1, "cell 3 3, spanx");
+        btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                findTutor ft = new findTutor();
+            }
+        });
+        contentPane.add(btnNewButton_1, "cell 3 3");
 
         JButton btnNewButton_2 = new JButton("Delete Tutor");
         btnNewButton_2.addActionListener(new ActionListener() {
@@ -106,6 +112,6 @@ public class Main extends JFrame {
                 deleteTutor dt = new deleteTutor();
             }
         });
-        contentPane.add(btnNewButton_2, "cell 5 3, spanx");
+        contentPane.add(btnNewButton_2, "cell 5 3");
     }
 }

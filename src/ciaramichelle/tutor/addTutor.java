@@ -49,6 +49,7 @@ public class addTutor extends JFrame {
      * Create the frame.
      */
     public addTutor() {
+        setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 589, 870);
         contentPane = new JPanel();
@@ -249,8 +250,8 @@ public class addTutor extends JFrame {
                         try {
                             if (current.readUTF().equalsIgnoreCase(textField.getText()) && current.readUTF().equalsIgnoreCase(textField_1.getText())) {
                                 String textFieldText = textField.getText();
-                                current.writeInt((int) comboBox.getItemAt(comboBox
-                                        .getSelectedIndex()));
+                                current.writeInt(Integer.parseInt(comboBox.getItemAt(comboBox
+                                        .getSelectedIndex()).toString()));
                                 current.writeBoolean(chckbxPeriod.isSelected());
                                 current.writeBoolean(chckbxPeriod.isSelected());
                                 current.writeBoolean(chckbxPeriod.isSelected());
@@ -367,8 +368,8 @@ public class addTutor extends JFrame {
                                     "%-15s",
                                     textFieldText.substring(0,
                                             Math.min(textFieldText.length(), 15))));
-                            current.writeInt((int) comboBox.getItemAt(comboBox
-                                    .getSelectedIndex()));
+                            current.writeInt(Integer.parseInt(comboBox.getItemAt(comboBox
+                                    .getSelectedIndex()).toString()));
                             current.writeBoolean(chckbxPeriod.isSelected());
                             current.writeBoolean(chckbxPeriod_1.isSelected());
                             current.writeBoolean(chckbxPeriod_2.isSelected());
