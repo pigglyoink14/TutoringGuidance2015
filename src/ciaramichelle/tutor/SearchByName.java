@@ -181,7 +181,8 @@ public class SearchByName {
                 while (true) {
                     try {
                         if (into.readBoolean() == true) {
-                            into.seek(into.getFilePointer()-(position+1));
+                            int testInteger = (int) (into.getFilePointer() - position + 3);
+                            into.seek(into.getFilePointer()-(position) + 3);
                             SearchByName person = new SearchByName(into.readUTF(), into.readUTF(), into.readInt(), into.readBoolean(), into.readBoolean(), 
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 

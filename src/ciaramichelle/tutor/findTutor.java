@@ -201,7 +201,7 @@ public class findTutor extends JFrame {
                 HashSet<SearchByName> people = new HashSet<>();
                 try {
                     if (chckbxNewCheckBox.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 101));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 57));
 
                     }
                     if (chckbxEnglish.isSelected()) {
