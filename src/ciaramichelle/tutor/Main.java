@@ -40,18 +40,18 @@ public class Main extends JFrame {
                     int grade = raf.readInt();
                     if (grade == 12) {
                         long tutorPos = raf.getFilePointer() - 38;
-                        byte[] lastTutor = new byte[153];
-                        raf.seek(raf.length() - 153);
+                        byte[] lastTutor = new byte[83];
+                        raf.seek(raf.length() - 83);
                         raf.readFully(lastTutor);
                         raf.seek(tutorPos);
                         raf.write(lastTutor);
-                        raf.setLength(raf.length() - 153);
+                        raf.setLength(raf.length() - 83);
                         raf.seek(tutorPos);
 
                     } else if (grade == 11) {
                         raf.seek(raf.getFilePointer() - 4);
                         raf.writeInt(12);
-                        raf.seek(raf.getFilePointer() + 115);
+                        raf.seek(raf.getFilePointer() + 45);
 
                     }
 
@@ -91,11 +91,18 @@ public class Main extends JFrame {
         JButton btnNewButton = new JButton("Add Tutor");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                addTutor at = new addTutor();
             }
         });
         contentPane.add(btnNewButton, "cell 1 3");
 
         JButton btnNewButton_1 = new JButton("Find Tutor");
+        btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                findTutor ft = new findTutor();
+                
+            }
+        });
         contentPane.add(btnNewButton_1, "cell 3 3");
 
         JButton btnNewButton_2 = new JButton("Delete Tutor");
@@ -105,6 +112,7 @@ public class Main extends JFrame {
             }
         });
         contentPane.add(btnNewButton_2, "cell 5 3");
+        
     }
 }
 

@@ -140,7 +140,7 @@ public class SearchByName {
                             return person;
                             
                         } else {
-                            into.skipBytes(83);
+                            into.skipBytes(121);
                         }
                     } catch (EOFException e) {
                         System.out.println("sorry the name you are looking for does not exist");
@@ -162,16 +162,47 @@ public class SearchByName {
             
         
         RandomAccessFile into = new RandomAccessFile("binary.dat", "rw");
-        into.seek(position);
+        into.seek(position +4);
         ArrayList<SearchByName> persons = new ArrayList<>();
+        
                 while (true) {
                     try {
                         if (into.readBoolean() == true) {
+                            
                             into.seek(into.getFilePointer()-(position+1));
-                            SearchByName person = new SearchByName(into.readUTF(), into.readUTF(), into.readInt(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            String firstName = into.readUTF();
+                            String lastName = into.readUTF();
+                            int grade = into.readInt();
+                            boolean perOneSemOne = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perTwoSemOne = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perThreeSemOne = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perFourSemOne = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perFiveSemOne = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean monSemOne = into.readBoolean();
+                            boolean tuesSemOne = into.readBoolean();;
+                            boolean wedSemOne = into.readBoolean();
+                            boolean thursSemOne = into.readBoolean();
+                            boolean friSemOne = into.readBoolean();
+                            boolean perOneSemTwo = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perTwoSemTwo = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perThreeSemTwo = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perFourSemTwo = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            boolean perFiveSemTwo = into.readBoolean();
+                            into.seek(into.getFilePointer()+4);
+                            
+                            SearchByName person = new SearchByName(firstName, lastName,grade, perOneSemOne, perTwoSemOne,  
+                                    perThreeSemOne, perFourSemOne, perFiveSemOne, monSemOne, tuesSemOne,
+                                    wedSemOne, thursSemOne, friSemOne, perOneSemTwo, perTwoSemTwo, 
+                                    perThreeSemTwo, perFourSemTwo, perFiveSemTwo, into.readBoolean(), into.readBoolean(),
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
                                     into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
@@ -182,7 +213,7 @@ public class SearchByName {
                             
                             
                         } else {
-                            into.skipBytes(152);
+                            into.skipBytes(121);
                         }
                     } catch (EOFException e) {
                         System.out.println("sorry the name you are looking for does not exist");
