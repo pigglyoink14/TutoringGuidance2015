@@ -210,7 +210,7 @@ public class SearchByName {
                             
                             
                         } else {
-                            into.skipBytes(121);
+                            into.skipBytes(142);
                         }
                     } catch (EOFException e) {
                         System.out.println("sorry the name you are looking for does not exist");

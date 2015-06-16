@@ -380,12 +380,6 @@ public class findTutor extends JFrame {
 
                     }
                     TutorList stuff = new TutorList(finalPeople);
-                    System.out.println(finalPeople.get(0).firstName);
-                    System.out.println(finalPeople.get(0).lastName);
-                    System.out.println(finalPeople.get(0).grade);
-                    System.out.println(finalPeople.get(0).semOnePerOne);
-                    System.out.println(finalPeople.get(0).semOnePerTwo);
-                    System.out.println(finalPeople.get(0).semOnePerThree);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
