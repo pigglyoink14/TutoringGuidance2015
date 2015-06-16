@@ -26,60 +26,62 @@ public class Main extends JFrame {
     //ciara
     public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
         RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
-        int year = raf.readInt();
-        String oldstring = year + "-09-01";
-        Date dateNew = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
-        Date date = new Date();
-        if (date.after(dateNew)) {
-            year++;
-            raf.seek(0);
-            raf.writeInt(year);
-            while (true) {
-                try {
-                    raf.skipBytes(34);
-                    int grade = raf.readInt();
-                    if (grade == 12) {
-                        long tutorPos = raf.getFilePointer() - 38;
-                        byte[] lastTutor = new byte[83];
-                        raf.seek(raf.length() - 83);
-                        raf.readFully(lastTutor);
-                        raf.seek(tutorPos);
-                        raf.write(lastTutor);
-                        raf.setLength(raf.length() - 83);
-                        raf.seek(tutorPos);
+        //michelle - if file has no tutors in it + made year up to date
+        if (raf.length() > 90) { 
+            int year = raf.readInt();
+            String oldstring = year + "-09-01";
+            Date dateNew = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
+            Date date = new Date();
+            if (date.after(dateNew)) {
+                year++;
+                raf.seek(0);
+                raf.writeInt(year);
+                while (true) {
+                    try {
+                        raf.skipBytes(34);
+                        int grade = raf.readInt();
+                        if (grade == 12) {
+                            long tutorPos = raf.getFilePointer() - 38;
+                            byte[] lastTutor = new byte[153];
+                            raf.seek(raf.length() - 153);
+                            raf.readFully(lastTutor);
+                            raf.seek(tutorPos);
+                            raf.write(lastTutor);
+                            raf.setLength(raf.length() - 153);
+                            raf.seek(tutorPos);
 
-                    } else if (grade == 11) {
-                        raf.seek(raf.getFilePointer() - 4);
-                        raf.writeInt(12);
-                        raf.seek(raf.getFilePointer() + 45);
+                        } else if (grade == 11) {
+                            raf.seek(raf.getFilePointer() - 4);
+                            raf.writeInt(12);
+                            raf.seek(raf.getFilePointer() + 115);
 
+                        }
+
+                    } catch (EOFException e) {
+                        raf.close();
+                        break;
                     }
 
-                } catch (EOFException e) {
-                    raf.close();
-                    break;
                 }
 
+            } else {
+                raf.close();
             }
-
-        } else {
-            raf.close();
         }
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Main frame = new Main();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
+            EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        Main frame = new Main();
+                        frame.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        });
+            });
     }
-
-    /**
-     * Create the frame.
-     */
+        /**
+         * Create the frame.
+         */
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -100,7 +102,6 @@ public class Main extends JFrame {
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 findTutor ft = new findTutor();
-                
             }
         });
         contentPane.add(btnNewButton_1, "cell 3 3");
@@ -112,8 +113,5 @@ public class Main extends JFrame {
             }
         });
         contentPane.add(btnNewButton_2, "cell 5 3");
-        
     }
 }
-
-	

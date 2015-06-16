@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,7 +27,7 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.DocumentFilter.FilterBypass;
 
 public class deleteTutor extends JFrame implements ActionListener {
-    //records are 113 bytes
+    //records are 143 bytes
     private JPanel contentPane;
     private GridBagLayout baglayout = new GridBagLayout();
     private JLabel firstName, lastName;
@@ -196,40 +197,42 @@ public class deleteTutor extends JFrame implements ActionListener {
         contentPane.add(backButton, gbc);
 
         setVisible(true);
-        //%1$15s
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("delete")) {
             //use last name to search for first
-            searchString = String.format("%-15s", lnField.getText().substring(0, Math.min(lnField.getText().length(), 15)));
-            System.out.println(searchString);
-            System.out.println(searchString.length());
+            String searchString1 = String.format("%-15s", fnField.getText().substring(0, Math.min(fnField.getText().length(), 15))) + String.format("%-15s", lnField.getText().substring(0, Math.min(lnField.getText().length(), 15)));;
             try {
              //raf the file
              RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
              //insert linear search to delete
              int tempPointer;
              int originLength = (int) (raf.length());
-             for(int i = 0; i < raf.length(); i += 113){
-                 raf.seek(i);
+             for(int i = 0; raf.getFilePointer() < raf.length() - 4; i++){
+                 if(i == 0)
+                     raf.seek(4);
+                 else
+                    raf.skipBytes(109);
                  String tempName = raf.readUTF() + raf.readUTF();
-                 if(tempName.equals(searchString)){
-                     tempPointer = i + 113;
+                 if(tempName.equalsIgnoreCase(searchString1)){
+                     tempPointer = (int) (raf.getFilePointer() + 109);
                      raf.seek(tempPointer);
                     //store one record over bytes into a type
-                    byte[] temp = new byte[(int) (152 * ((raf.length() / 152) - (raf.getFilePointer() / 152)))];
+                    byte[] temp = new byte[(int) (raf.length() - tempPointer)];
                     raf.readFully(temp);
-                    //remove 152 bytes of data
-                    raf.setLength(tempPointer);
-                    raf.seek(raf.length()+1);
+                    //remove the record
+                    raf.setLength(tempPointer - 143);
+                    raf.seek(raf.length());
                     raf.write(temp); 
                     break;
                  }
              }
-             if(originLength == raf.length())
+             if(originLength == raf.length()){
+                 JDialog errorMessage = new JDialog();
                  System.out.println("No one of that name was found.");
+             }
              raf.close();
              } catch (IOException ex) {
              ex.printStackTrace();

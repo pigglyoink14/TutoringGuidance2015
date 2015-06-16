@@ -5,6 +5,8 @@ package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -15,36 +17,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class TutorList extends JFrame {
+public class TutorList extends JFrame{
 
 	private JPanel contentPane;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TutorList frame = new TutorList();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
 	public TutorList(ArrayList<SearchByName> stuffOne) {
-            
-            
-            
-            
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                  
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -58,6 +41,10 @@ public class TutorList extends JFrame {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
                 tableModel stuff = new tableModel(stuffOne);
 		table.setModel(stuff);
+                table.addMouseListener(new MouseAdapter(){
+                public void mousePressed(MouseEvent e){
+                    SpecificTutor st = new SpecificTutor(stuffOne.get(table.getSelectedRow()));
+                }});
 		scrollPane.setViewportView(table);
                 setVisible(true);
 	}
