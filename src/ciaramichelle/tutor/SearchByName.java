@@ -178,7 +178,8 @@ public class SearchByName {
         RandomAccessFile into = new RandomAccessFile("binary.dat", "rw");
         into.seek(position);
         ArrayList<SearchByName> persons = new ArrayList<>();
-                while (true) {
+                
+        while (true) {
                     try {
                         if (into.readBoolean() == true) {
                             int testInteger = (int) (into.getFilePointer() - position + 3);
@@ -209,24 +210,16 @@ public class SearchByName {
                             
                             
                         } else {
-                            into.skipBytes(152);
+                            into.skipBytes(142);
                         }
                     } catch (EOFException e) {
                         System.out.println("sorry the name you are looking for does not exist");
                         into.close();
-                        return null;
-                    }
-                    catch (FileNotFoundException j){
-                        System.out.println("sorry the file you are looking for does not exist");
-                        return null;
-                    }
-                    catch (IOException k){
-                        System.out.println("sorry there was an IO error, please try again");
-                        return null;
-                    }
-                    return persons;
+                        return persons;
+                    } 
+                    
 
-                }
+                } 
     }
 
     @Override
