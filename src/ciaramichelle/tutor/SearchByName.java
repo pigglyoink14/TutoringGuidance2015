@@ -1,4 +1,3 @@
-
 //ciara
 package ciaramichelle.tutor;
 
@@ -16,6 +15,7 @@ import java.util.Objects;
  * @author Ciara
  */
 public class SearchByName {
+
     String firstName;
     String lastName;
     int grade;
@@ -117,116 +117,108 @@ public class SearchByName {
         this.greadeElevenPreAPMath = greadeElevenPreAPMath;
         this.availiability = avab;
     }
-    
-    
-    
 
-    
-    
-    public SearchByName searchByName(String file, String firstName, String lastName) throws FileNotFoundException, IOException{
+    public static SearchByName searchByName(String file, String firstName, String lastName) throws FileNotFoundException, IOException {
         DataInputStream into = new DataInputStream(new FileInputStream("binary.dat"));
-                while (true) {
-                    try {
-                        if (into.readUTF().equalsIgnoreCase(firstName) && into.readUTF().equalsIgnoreCase(lastName)) {
-                            SearchByName person = new SearchByName(firstName, lastName, into.readInt(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(),
+        while (true) {
+            try {
+                if (into.readUTF().equalsIgnoreCase(firstName) && into.readUTF().equalsIgnoreCase(lastName)) {
+                    SearchByName person = new SearchByName(firstName, lastName, into.readInt(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(),
                             new boolean[]{into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean()});
-                            into.close();
-                            return person;
-                            
-                        } else {
-                            into.skipBytes(83);
-                        }
-                    } catch (EOFException e) {
-                        System.out.println("sorry the name you are looking for does not exist");
-                        into.close();
-                        return null;
-                    }
-                    catch (FileNotFoundException j){
-                        System.out.println("sorry the file you are looking for does not exist");
-                        return null;
-                    }
-                    catch (IOException k){
-                        System.out.println("sorry there was an IO error, please try again");
-                        return null;
-                    }
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean()});
+                    into.close();
+                    return person;
 
+                } else {
+                    into.skipBytes(109);
                 }
+            } catch (EOFException e) {
+                System.out.println("sorry the name you are looking for does not exist");
+                into.close();
+                return null;
+            } catch (FileNotFoundException j) {
+                System.out.println("sorry the file you are looking for does not exist");
+                return null;
+            } catch (IOException k) {
+                System.out.println("sorry there was an IO error, please try again");
+                return null;
+            }
+
+        }
     }
-    public static ArrayList<SearchByName> searchBySubject(String file, int position) throws FileNotFoundException, IOException{
-            
-        
-        RandomAccessFile into = new RandomAccessFile("binary.dat", "rw");
-        into.seek(position);
-        ArrayList<SearchByName> persons = new ArrayList<>();
-                while (true) {
-                    try {
-                        if (into.readBoolean() == true) {
-                            int testInteger = (int) (into.getFilePointer() - position + 3);
-                            into.seek(into.getFilePointer()-(position) + 3);
-                            SearchByName person = new SearchByName(into.readUTF(), into.readUTF(), into.readInt(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), 
-                                    into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                            new boolean[]{into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
-                                        into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean()});
-                            persons.add(person);
-                            
-                            
-                        } else {
-                            into.skipBytes(152);
-                        }
-                    } catch (EOFException e) {
-                        System.out.println("sorry the name you are looking for does not exist");
-                        into.close();
-                        return null;
-                    }
-                    catch (FileNotFoundException j){
-                        System.out.println("sorry the file you are looking for does not exist");
-                        return null;
-                    }
-                    catch (IOException k){
-                        System.out.println("sorry there was an IO error, please try again");
-                        return null;
-                    }
-                    return persons;
 
+    public static ArrayList<SearchByName> searchBySubject(String file, int position) throws FileNotFoundException, IOException {
+
+        RandomAccessFile into = new RandomAccessFile("binary.dat", "rw");
+        into.seek(position + 4);
+        ArrayList<SearchByName> persons = new ArrayList<>();
+        while (into.getFilePointer() + 143 - position <= into.length()) {
+            try {
+                if (into.readBoolean() == true) {
+                    into.seek(into.getFilePointer() - 1 - position);
+                    
+                    SearchByName person = new SearchByName(into.readUTF(), into.readUTF(), into.readInt(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                            new boolean[]{into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(),
+                                into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean(), into.readBoolean()});
+                    persons.add(person);
+                    into.skipBytes(position);
+
+                } else {
+                    into.skipBytes(142);
                 }
+
+            } catch (EOFException e) {
+                System.out.println("sorry the name you are looking for does not exist");
+                into.close();
+                return null;
+            } catch (FileNotFoundException j) {
+                System.out.println("sorry the file you are looking for does not exist");
+                return null;
+            } catch (IOException k) {
+                System.out.println("sorry there was an IO error, please try again");
+                return null;
+            }
+
+        }
+        return persons;
     }
 
     @Override
@@ -258,5 +250,5 @@ public class SearchByName {
         }
         return true;
     }
- 
+
 }

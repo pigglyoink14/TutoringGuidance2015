@@ -201,95 +201,95 @@ public class findTutor extends JFrame {
                 HashSet<SearchByName> people = new HashSet<>();
                 try {
                     if (chckbxNewCheckBox.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 57));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 58));
 
                     }
                     if (chckbxEnglish.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 102));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 59));
 
                     }
                     if (chckbxScience.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 103));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 60));
 
                     }
                     if (chckbxGeography.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 104));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 61));
 
                     }
                     if (chckbxFrench.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 105));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 62));
 
                     }
                     if (chckbxFiFrench.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 106));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 63));
 
                     }
                     if (checkBox.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 107));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 64));
 
                     }
                     if (checkBox_2.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 108));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 65));
 
                     }
                     if (checkBox_4.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 109));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 66));
 
                     }
                     if (chckbxHistory.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 110));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 67));
 
                     }
                     if (chckbxFrench_1.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 111));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 68));
 
                     }
                     if (chckbxFiFrench_1.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 112));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 69));
 
                     }
                     if (chckbxFiScience_1.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 113));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 70));
 
                     }
                     if (chckbxFiHistory.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 114));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 71));
 
                     }
                     if (checkBox_1.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 115));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 72));
 
                     }
                     if (checkBox_3.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 116));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 73));
 
                     }
                     if (chckbxBiology.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 117));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 74));
 
                     }
                     if (chckbxChemistry.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 118));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 75));
 
                     }
                     if (chckbxPhysics.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 119));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 76));
 
                     }
                     if (chckbxFrench_2.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 120));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 77));
 
                     }
                     if (chckbxFiFrench_2.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 121));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 78));
 
                     }
                     if (chckbxPreApBiology.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 122));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 79));
 
                     }
                     if (chckbxPreApMath.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 123));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 80));
 
                     }
                     ArrayList<SearchByName> finalPeople = new ArrayList<>();
@@ -380,12 +380,6 @@ public class findTutor extends JFrame {
 
                     }
                     TutorList stuff = new TutorList(finalPeople);
-                    System.out.println(finalPeople.get(0).firstName);
-                    System.out.println(finalPeople.get(0).lastName);
-                    System.out.println(finalPeople.get(0).grade);
-                    System.out.println(finalPeople.get(0).semOnePerOne);
-                    System.out.println(finalPeople.get(0).semOnePerTwo);
-                    System.out.println(finalPeople.get(0).semOnePerThree);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
