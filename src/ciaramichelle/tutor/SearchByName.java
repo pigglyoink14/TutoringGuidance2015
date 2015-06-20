@@ -65,6 +65,7 @@ public class SearchByName {
     boolean greadeElevenPreAPBiology;
     boolean greadeElevenPreAPMath;
     boolean[] availiability = new boolean[60];
+    String subjects = "MATHENGLISHASDFAWERASDF";
 
     public SearchByName(String firstName, String lastName, int grade, boolean semOnePerOne, boolean semOnePerTwo, boolean semOnePerThree, boolean semOnePerFour, boolean semOnePerFive, boolean semOneMonday, boolean semOneTuesday, boolean semOneWednesday, boolean semOneThursday, boolean semOneFriday, boolean semTwoPerOne, boolean semTwoPerTwo, boolean semTwoPerThree, boolean semTwoPerFour, boolean semTwoPerFive, boolean semTwoMonday, boolean semTwoTuesday, boolean semTwoWednesday, boolean semTwoThursday, boolean semTwoFriday, boolean greadeNineMath, boolean greadeNineEnglish, boolean greadeNineScience, boolean greadeNineGeography, boolean greadeNineFrench, boolean greadeNineFIFrench, boolean greadeNineFIScience, boolean greadeNineFIGeography, boolean greadeTenMath, boolean greadeTenEnglish, boolean greadeTenScience, boolean greadeTenHistory, boolean greadeTenFrench, boolean greadeTenFIFrench, boolean greadeTenFIScience, boolean greadeTenFIHistory, boolean greadeElevenMath, boolean greadeElevenEnglish, boolean greadeElevenBiology, boolean greadeElevenChemistry, boolean greadeElevenPhysics, boolean greadeElevenFrench, boolean greadeElevenFIFrench, boolean greadeElevenPreAPBiology, boolean greadeElevenPreAPMath, boolean[] avab) {
         this.firstName = firstName;

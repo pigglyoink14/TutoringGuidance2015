@@ -2,11 +2,9 @@
 //gui - ciara
 package ciaramichelle.tutor;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -18,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.HashSet;
 
 public class findTutor extends JFrame {
@@ -32,15 +32,65 @@ public class findTutor extends JFrame {
     private JCheckBox chckbxPeriod_3;
     private JCheckBox chckbxPeriod_4;
     private JLabel lblSubjects;
-    private ArrayList arb = new ArrayList();
 
     /**
      * Create the frame.
      */
     public findTutor() {
+        
+        //find tutor
+        JButton btnNewButton = new JButton("Find Tutor");
+        btnNewButton.setEnabled(false);
+        
+        //subject checkboxes
+        JCheckBox checkBox = new JCheckBox("Math\r\n");
+        JCheckBox checkBox_1 = new JCheckBox("Math\r\n");
+        JCheckBox chckbxEnglish = new JCheckBox("English");
+        JCheckBox checkBox_2 = new JCheckBox("English");
+        JCheckBox checkBox_3 = new JCheckBox("English");
+        JCheckBox chckbxScience = new JCheckBox("Science");
+        JCheckBox checkBox_4 = new JCheckBox("Science");
+        JCheckBox chckbxBiology = new JCheckBox("Biology");
+        JCheckBox chckbxGeography = new JCheckBox("Geography");
+        JCheckBox chckbxHistory = new JCheckBox("History");
+        JCheckBox chckbxChemistry = new JCheckBox("Chemistry");
+        JCheckBox chckbxFrench = new JCheckBox("French");
+        JCheckBox chckbxFrench_1 = new JCheckBox("French");
+        JCheckBox chckbxPhysics = new JCheckBox("Physics");
+        JCheckBox chckbxFiFrench = new JCheckBox("FI French");
+        JCheckBox chckbxFiFrench_1 = new JCheckBox("FI French");
+        JCheckBox chckbxFrench_2 = new JCheckBox("French");
+        JCheckBox chckbxFiScience = new JCheckBox("FI Science");
+        JCheckBox chckbxFiScience_1 = new JCheckBox("FI Science");
+        JCheckBox chckbxFiFrench_2 = new JCheckBox("FI French");
+        JCheckBox chckbxFiGeography = new JCheckBox("FI Geography");
+        JCheckBox chckbxFiHistory = new JCheckBox("FI History");
+        JCheckBox chckbxPreApBiology = new JCheckBox("Pre AP BIology");
+        JCheckBox chckbxPreApMath = new JCheckBox("Pre AP Math");
+        
+        //only allow finding if at least one subject is checked
+        ItemListener il = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent e){
+                if( e.getStateChange() == 1 && (e.getSource().equals(checkBox) || e.getSource().equals(checkBox_1) || e.getSource().equals(chckbxEnglish) || e.getSource().equals(checkBox_2)
+                        || e.getSource().equals(checkBox_3) || e.getSource().equals(chckbxScience) || e.getSource().equals(chckbxGeography) || e.getSource().equals(chckbxHistory)
+                        || e.getSource().equals(chckbxChemistry) || e.getSource().equals(chckbxFrench) || e.getSource().equals(chckbxFrench_1) || e.getSource().equals(chckbxPhysics)
+                        || e.getSource().equals(chckbxFiFrench) || e.getSource().equals(chckbxFiFrench_1) || e.getSource().equals(chckbxFrench_2) || e.getSource().equals(chckbxFiScience)
+                        || e.getSource().equals(chckbxFiScience_1) || e.getSource().equals(chckbxFiFrench_2) || e.getSource().equals(chckbxFiGeography) || e.getSource().equals(chckbxFiHistory)
+                        || e.getSource().equals(chckbxPreApBiology) || e.getSource().equals(chckbxPreApMath)))
+                    btnNewButton.setEnabled(true);
+                else if(!checkBox.isSelected() && !checkBox_1.isSelected() && !chckbxEnglish.isSelected() && !checkBox_2.isSelected() && !checkBox_3.isSelected() && !chckbxScience.isSelected()
+                        && !chckbxGeography.isSelected() && !chckbxHistory.isSelected() && !chckbxFiFrench.isSelected() && !chckbxFiFrench_1.isSelected() && !chckbxFrench_2.isSelected() && !chckbxFiScience.isSelected()
+                        && !chckbxFiScience_1.isSelected() && !chckbxFiFrench_2.isSelected() && !chckbxFiGeography.isSelected() && !chckbxFiHistory.isSelected() && !chckbxPreApBiology.isSelected() && !chckbxPreApMath.isSelected())
+                    btnNewButton.setEnabled(false);
+            }
+            
+            
+        };
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 538, 674);
+        setBounds(100, 100, 538, 690);
+        setTitle("Find a Tutor!");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -121,80 +171,80 @@ public class findTutor extends JFrame {
         JCheckBox chckbxNewCheckBox = new JCheckBox("Math\r\n");
         contentPane.add(chckbxNewCheckBox, "cell 1 27");
 
-        JCheckBox checkBox = new JCheckBox("Math\r\n");
+        checkBox.addItemListener(il);
         contentPane.add(checkBox, "cell 2 27");
 
-        JCheckBox checkBox_1 = new JCheckBox("Math\r\n");
+        checkBox_1.addItemListener(il);
         contentPane.add(checkBox_1, "cell 3 27");
 
-        JCheckBox chckbxEnglish = new JCheckBox("English");
+        chckbxEnglish.addItemListener(il);
         contentPane.add(chckbxEnglish, "cell 1 28");
 
-        JCheckBox checkBox_2 = new JCheckBox("English");
+        checkBox_2.addItemListener(il);
         contentPane.add(checkBox_2, "cell 2 28");
 
-        JCheckBox checkBox_3 = new JCheckBox("English");
+        checkBox_3.addItemListener(il);
         contentPane.add(checkBox_3, "cell 3 28");
 
-        JCheckBox chckbxScience = new JCheckBox("Science");
+        chckbxScience.addItemListener(il);
         contentPane.add(chckbxScience, "cell 1 29");
 
-        JCheckBox checkBox_4 = new JCheckBox("Science");
+        checkBox_4.addItemListener(il);
         contentPane.add(checkBox_4, "cell 2 29");
 
-        JCheckBox chckbxBiology = new JCheckBox("Biology");
+        chckbxBiology.addItemListener(il);
         contentPane.add(chckbxBiology, "cell 3 29");
 
-        JCheckBox chckbxGeography = new JCheckBox("Geography");
+        chckbxGeography.addItemListener(il);
         contentPane.add(chckbxGeography, "cell 1 30");
 
-        JCheckBox chckbxHistory = new JCheckBox("History");
+        chckbxHistory.addItemListener(il);
         contentPane.add(chckbxHistory, "cell 2 30");
 
-        JCheckBox chckbxChemistry = new JCheckBox("Chemistry");
+        chckbxChemistry.addItemListener(il);
         contentPane.add(chckbxChemistry, "cell 3 30");
 
-        JCheckBox chckbxFrench = new JCheckBox("French");
+        chckbxFrench.addItemListener(il);
         contentPane.add(chckbxFrench, "cell 1 31");
 
-        JCheckBox chckbxFrench_1 = new JCheckBox("French");
+        chckbxFrench_1.addItemListener(il);
         contentPane.add(chckbxFrench_1, "cell 2 31");
 
-        JCheckBox chckbxPhysics = new JCheckBox("Physics");
+        chckbxPhysics.addItemListener(il);
         contentPane.add(chckbxPhysics, "cell 3 31");
 
-        JCheckBox chckbxFiFrench = new JCheckBox("FI French");
+        chckbxFiFrench.addItemListener(il);
         contentPane.add(chckbxFiFrench, "cell 1 32");
 
-        JCheckBox chckbxFiFrench_1 = new JCheckBox("FI French");
+        chckbxFiFrench_1.addItemListener(il);
         contentPane.add(chckbxFiFrench_1, "cell 2 32");
 
-        JCheckBox chckbxFrench_2 = new JCheckBox("French");
+        chckbxFrench_2.addItemListener(il);
         contentPane.add(chckbxFrench_2, "cell 3 32");
 
-        JCheckBox chckbxFiScience = new JCheckBox("FI Science");
+        chckbxFiScience.addItemListener(il);
         contentPane.add(chckbxFiScience, "cell 1 33");
 
-        JCheckBox chckbxFiScience_1 = new JCheckBox("FI Science");
+        chckbxFiScience_1.addItemListener(il);
         contentPane.add(chckbxFiScience_1, "cell 2 33");
 
-        JCheckBox chckbxFiFrench_2 = new JCheckBox("FI French");
+        chckbxFiFrench_2.addItemListener(il);
         contentPane.add(chckbxFiFrench_2, "cell 3 33");
 
-        JCheckBox chckbxFiGeography = new JCheckBox("FI Geography");
+        chckbxFiGeography.addItemListener(il);
         contentPane.add(chckbxFiGeography, "cell 1 34");
 
-        JCheckBox chckbxFiHistory = new JCheckBox("FI History");
+        chckbxFiHistory.addItemListener(il);
         contentPane.add(chckbxFiHistory, "cell 2 34");
 
-        JCheckBox chckbxPreApBiology = new JCheckBox("Pre AP BIology");
+        
+        chckbxPreApBiology.addItemListener(il);
         contentPane.add(chckbxPreApBiology, "cell 3 34");
 
-        JCheckBox chckbxPreApMath = new JCheckBox("Pre AP Math");
+        chckbxPreApMath.addItemListener(il);
         contentPane.add(chckbxPreApMath, "cell 3 35");
-
-        JButton btnNewButton = new JButton("Find Tutor");
-
+        
+        //when find button is pressed
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
 

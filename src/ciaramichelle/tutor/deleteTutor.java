@@ -239,8 +239,6 @@ public class deleteTutor extends JFrame implements ActionListener {
              }
             
         } else if (e.getActionCommand().equals("back")) {
-            System.out.println("Go Back");
-            //open main window
             //dispose of this window
             dispose();
             

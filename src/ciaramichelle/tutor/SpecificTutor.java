@@ -3,18 +3,15 @@ package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,11 +31,13 @@ public class SpecificTutor extends JFrame {
      */
     public SpecificTutor(SearchByName person) {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 569, 496);
+        setBounds(100, 100, 569 + 100, 496 + 100);
+        setLocationRelativeTo(null);
+        setTitle(person.firstName.trim() + " " + person.lastName.trim());
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(new MigLayout("", "[][][][][][]", "[][][][][][][][][][][][][][][][][][][][]"));
+        contentPane.setLayout(new MigLayout("", "[111][111][111][111][111][111]", "[][][][][][30.00][30.00][30.00][30.00][30.00][30.00][][][][30.00][30.00][30.00][30.00][30.00][30.00]"));
 
         JLabel lblFirstName = new JLabel("First Name:");
         contentPane.add(lblFirstName, "cell 1 0");
@@ -50,16 +49,19 @@ public class SpecificTutor extends JFrame {
         contentPane.add(lblGrade, "cell 5 0");
 
         JLabel lblNewLabel = new JLabel(person.firstName);
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblNewLabel, "cell 1 1");
 
         JLabel lblNewLabel_1 = new JLabel(person.lastName);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblNewLabel_1, "cell 3 1");
 
         JLabel lblNewLabel_2 = new JLabel(String.valueOf(person.grade));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblNewLabel_2, "cell 5 1");
 
         JLabel lblSemesterOne = new JLabel("Semester One");
-        contentPane.add(lblSemesterOne, "cell 1 3 2 1");
+        contentPane.add(lblSemesterOne, "cell 0 3 2 1");
 
         JLabel lblMonday = new JLabel("Monday");
         contentPane.add(lblMonday, "cell 1 4");
@@ -108,7 +110,7 @@ public class SpecificTutor extends JFrame {
                     }
                 });
                 buttons[counter].setActionCommand(String.valueOf(counter));
-                contentPane.add(buttons[counter], "cell " + j + " " + i);
+                contentPane.add(buttons[counter], "cell " + j + " " + i + ", grow");
                 counter++;
             }
 
@@ -159,7 +161,7 @@ public class SpecificTutor extends JFrame {
                 });
 
                 buttonsTwo[counterTwo].setActionCommand(String.valueOf(counter + 30));
-                contentPane.add(buttonsTwo[counterTwo], "cell " + j + " " + i);
+                contentPane.add(buttonsTwo[counterTwo], "cell " + j + " " + i + ", grow");
                 counterTwo++;
             }
 

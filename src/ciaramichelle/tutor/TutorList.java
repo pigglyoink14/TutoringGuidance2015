@@ -4,7 +4,8 @@
 package ciaramichelle.tutor;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -28,7 +29,10 @@ public class TutorList extends JFrame{
 
                   
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setBounds((int) (screenSize.width * 0.7), 100,500, 500);
+                setLocationRelativeTo(null);
+                setTitle("Tutor List");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -41,6 +45,8 @@ public class TutorList extends JFrame{
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
                 tableModel stuff = new tableModel(stuffOne);
 		table.setModel(stuff);
+                table.getColumnModel().getColumn(3).setPreferredWidth(268);
+                table.setRowHeight(50);
                 table.addMouseListener(new MouseAdapter(){
                 public void mousePressed(MouseEvent e){
                     SpecificTutor st = new SpecificTutor(stuffOne.get(table.getSelectedRow()));

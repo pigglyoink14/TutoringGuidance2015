@@ -9,6 +9,7 @@ package ciaramichelle.tutor;
 import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableColumn;
 
 
 @SuppressWarnings("serial")
@@ -33,6 +34,8 @@ public class tableModel extends AbstractTableModel {
                 return "Last Name";
             case 2:
                 return "Grade";
+            case 3:
+                return "Subject";
             
             default:
                 break;
@@ -47,7 +50,7 @@ public class tableModel extends AbstractTableModel {
      */
     public int getColumnCount() {
 
-        return 3;
+        return 4;
     }
 
     @Override
@@ -69,7 +72,8 @@ public class tableModel extends AbstractTableModel {
                 return CurrentRecord.lastName;
             case 2:
                 return CurrentRecord.grade;
-            
+            case 3:
+                return CurrentRecord.subjects;
 
             default:
                 break;
