@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,7 +24,10 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.DocumentFilter.FilterBypass;
-
+/**
+ * Class that deletes tutors within a binary file
+ * @author Michelle
+ */
 public class deleteTutor extends JFrame implements ActionListener {
     //records are 143 bytes
     private JPanel contentPane;
@@ -33,9 +35,7 @@ public class deleteTutor extends JFrame implements ActionListener {
     private JLabel firstName, lastName;
     private JTextField fnField, lnField;
     private JButton delButton, backButton;
-
-    private String searchString;
-
+    
     /**
      * Create the frame.
      */
@@ -58,7 +58,6 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.ipady = 0;
-        //gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.BASELINE_LEADING;
         gbc.insets = new Insets(getHeight() / 16, 0, 0, 0);
         firstName = new JLabel("First Name:");
@@ -74,6 +73,7 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.insets = new Insets(0, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fnField = new JTextField();
+        //limit to 15 chars user can input
         fnField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
@@ -101,8 +101,6 @@ public class deleteTutor extends JFrame implements ActionListener {
             }
         }
         );
-        
-        
         contentPane.add(fnField, gbc);
 
         //last name
@@ -111,7 +109,6 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.ipady = 0;
         gbc.weightx = 0;
         gbc.weighty = 0;
-        //gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.BASELINE_LEADING;
         gbc.insets = new Insets(getHeight() / 16, 0, 0, 0);
         lastName = new JLabel("Last Name:");
@@ -127,6 +124,7 @@ public class deleteTutor extends JFrame implements ActionListener {
         gbc.insets = new Insets(0, 0, 0, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         lnField = new JTextField();
+        //limit to 15 chars
         lnField.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 textfieldEditor(lnField);
@@ -186,7 +184,7 @@ public class deleteTutor extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("delete")) {
-            //use last name to search for first
+            //get full search string to compare deletion with file
             String searchString1 = String.format("%-15s", fnField.getText().substring(0, Math.min(fnField.getText().length(), 15))) + String.format("%-15s", lnField.getText().substring(0, Math.min(lnField.getText().length(), 15)));;
             try {
              //raf the file
@@ -203,7 +201,7 @@ public class deleteTutor extends JFrame implements ActionListener {
                  if(tempName.equalsIgnoreCase(searchString1)){
                      tempPointer = (int) (raf.getFilePointer() + 109);
                      raf.seek(tempPointer);
-                    //store one record over bytes into a type
+                    //store records over the record to be deleted into bytes array
                     byte[] temp = new byte[(int) (raf.length() - tempPointer)];
                     raf.readFully(temp);
                     //remove the record
@@ -213,17 +211,17 @@ public class deleteTutor extends JFrame implements ActionListener {
                     break;
                  }
              }
-             
+             //display appropriate message if a person was deleted, or no one of that name was found
              if(originLength == raf.length()){
                  JOptionPane.showMessageDialog(null, "No one of that name was found.");
-                 //errorMessage.setMessage("No one of that name was found.");
              }else
                  JOptionPane.showMessageDialog(null, fnField.getText() + " " + lnField.getText() + " was successfully deleted.");
+             //close raf
              raf.close();
              } catch (IOException ex) {
              ex.printStackTrace();
              }
-            
+        //user wants to go back    
         } else if (e.getActionCommand().equals("back")) {
             //dispose of this window
             dispose();

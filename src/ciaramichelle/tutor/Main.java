@@ -1,10 +1,6 @@
 package ciaramichelle.tutor;
 
 import com.bric.plaf.BevelButtonUI;
-import com.bric.plaf.ButtonFill;
-import com.bric.plaf.ButtonShape;
-import com.bric.plaf.CapsuleButtonUI;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,13 +14,11 @@ import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.bric.plaf.FilledButtonUI;
 import com.bric.plaf.ShimmerPaintUIEffect;
-import java.awt.geom.Rectangle2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
@@ -35,9 +29,12 @@ public class Main extends JFrame {
 
     //ciara
     public static void main(String[] args) throws ParseException, FileNotFoundException, IOException {
+        //intialize randomaccessfile
         RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
-        //michelle - if file has no tutors in it + made year up to date
+        
+        //michelle - if file has 1 or more tutors do this
         if (raf.length() > 90) {
+            //move grade 11's into grade 12's depending on what time of year this was accessed at
             int year = raf.readInt();
             String oldstring = year + "-09-01";
             Date dateNew = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
@@ -78,6 +75,7 @@ public class Main extends JFrame {
                 raf.close();
             }
         }
+        //create + show the frame
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -95,7 +93,6 @@ public class Main extends JFrame {
      */
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setBounds(100, 100, 450, 300);
         setTitle("Tutor Program");
         setBounds(100, 100, 674, 368);
         setLocationRelativeTo(null);
@@ -127,17 +124,19 @@ public class Main extends JFrame {
             }
         });
         contentPane.add(btnNewButton_2, "cell 2 1, grow");
-        BevelButtonUI duke = new BevelButtonUI();
-        btnNewButton_1.setUI(duke);
-        btnNewButton_2.setUI(duke);
-        btnNewButton.setUI(duke);
-        //btnNewButton_2.putClientProperty(FilledButtonUI.SHAPE, new Rectangle2D.Float(0,0,40, 80));
+        //shiny buttons
+        BevelButtonUI bevelButt = new BevelButtonUI();
+        btnNewButton_1.setUI(bevelButt);
+        btnNewButton_2.setUI(bevelButt);
+        btnNewButton.setUI(bevelButt);
         btnNewButton_1.putClientProperty(FilledButtonUI.SHAPE, new Ellipse2D.Float(0, 0, 40, 40));
         btnNewButton_2.putClientProperty(FilledButtonUI.SHAPE, new Ellipse2D.Float(0, 0, 40, 40));
         btnNewButton.putClientProperty(FilledButtonUI.SHAPE, new Ellipse2D.Float(0, 0, 40, 40));
         btnNewButton.addMouseListener(ShimmerPaintUIEffect.mouseListener);
         btnNewButton_1.addMouseListener(ShimmerPaintUIEffect.mouseListener);
         btnNewButton_2.addMouseListener(ShimmerPaintUIEffect.mouseListener);
+        
+        //set focus onto whatever button is hovered on
         btnNewButton_1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {

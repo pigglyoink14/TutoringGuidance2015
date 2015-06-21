@@ -12,20 +12,21 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashSet;
-import javax.swing.BorderFactory;
 import javax.swing.JSeparator;
 
+/**
+ * Finds tutor from a binary file list using filters from checkboxes
+ * @author Michelle
+ */
 public class findTutor extends JFrame {
 
     private JPanel contentPane;
-    private JLabel lblLastName;
     private JCheckBox chckbxPeriod;
     private JCheckBox chckbxPeriod_1;
     private JCheckBox chckbxPeriod_2;
@@ -97,7 +98,7 @@ public class findTutor extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
 
-        
+        //formatting/layout
         JLabel instructions = new JLabel("Please pick a Subject, and Day/Period you wish to find a Tutor for.");
         instructions.setFont(new Font("Tahoma", Font.BOLD, 14));
         contentPane.add(instructions, "cell 1 0 3 0, grow");
@@ -250,7 +251,7 @@ public class findTutor extends JFrame {
         //when find button is pressed
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-
+                //add people to hashset dependant on checked checkboxes, then filter even more using period and afterschool day
                 HashSet<SearchByName> people = new HashSet<>();
                 try {
                     if (chckbxNewCheckBox.isSelected()) {
@@ -432,6 +433,7 @@ public class findTutor extends JFrame {
                         }
 
                     }
+                    //after filtering, bring up list of filtered tutors
                     TutorList stuff = new TutorList(finalPeople);
 
                 } catch (IOException ex) {

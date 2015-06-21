@@ -41,13 +41,14 @@ public class TutorList extends JFrame {
         //set table properties and table
         JScrollPane scrollPane = new JScrollPane();
         contentPane.add(scrollPane, "cell 0 0,grow");
-
         table = new JTable();
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tableModel stuff = new tableModel(filteredList);
         table.setModel(stuff);
         table.getColumnModel().getColumn(3).setPreferredWidth(268);
         table.setRowHeight(50);
+        
+        //bring up clicked tutor's specific tutor page 
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

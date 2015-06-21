@@ -139,12 +139,13 @@ public class SpecificTutor extends JFrame {
                         || (i == 18 && !person.semTwoPerFive || (i == 19 && ((j == 1 && !person.semTwoMonday) || (j == 2 && !person.semTwoTuesday) || (j == 3 && !person.semTwoWednesday) || (j == 4 && !person.semTwoThursday) || (j == 5 && !person.semTwoFriday))))) {
                     buttonsTwo[counterTwo].setEnabled(false);
                 }
+                //make green if person is available those days, and has checked those days/periods off
                 if (!person.availiability[counterTwo + 30] && buttonsTwo[counterTwo].isEnabled()) {
                     buttonsTwo[counterTwo].setBackground(Color.red);
                 } else if (buttonsTwo[counterTwo].isEnabled() && person.availiability[counterTwo + 30]) {
                     buttonsTwo[counterTwo].setBackground(Color.green);
                 }
-
+                //switch the two colors when pressed on to signify booked
                 buttonsTwo[counterTwo].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -198,7 +199,7 @@ public class SpecificTutor extends JFrame {
 
         JLabel lblAfterSchool_1 = new JLabel("After School");
         contentPane.add(lblAfterSchool_1, "cell 0 19");
-
+        //when window closes, save availability
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
