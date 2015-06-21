@@ -2,7 +2,6 @@
 //gui - ciara
 package ciaramichelle.tutor;
 
-import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -15,6 +14,7 @@ import javax.swing.JDialog;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -35,22 +35,6 @@ public class deleteTutor extends JFrame implements ActionListener {
     private JButton delButton, backButton;
 
     private String searchString;
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    deleteTutor frame = new deleteTutor();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
@@ -210,7 +194,7 @@ public class deleteTutor extends JFrame implements ActionListener {
              //insert linear search to delete
              int tempPointer;
              int originLength = (int) (raf.length());
-             for(int i = 0; raf.getFilePointer() < raf.length() - 4; i++){
+             for(int i = 0; raf.getFilePointer()+143 < raf.length(); i++){
                  if(i == 0)
                      raf.seek(4);
                  else
@@ -229,10 +213,12 @@ public class deleteTutor extends JFrame implements ActionListener {
                     break;
                  }
              }
+             
              if(originLength == raf.length()){
-                 JDialog errorMessage = new JDialog();
-                 System.out.println("No one of that name was found.");
-             }
+                 JOptionPane.showMessageDialog(null, "No one of that name was found.");
+                 //errorMessage.setMessage("No one of that name was found.");
+             }else
+                 JOptionPane.showMessageDialog(null, fnField.getText() + " " + lnField.getText() + " was successfully deleted.");
              raf.close();
              } catch (IOException ex) {
              ex.printStackTrace();

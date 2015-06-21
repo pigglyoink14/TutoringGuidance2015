@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -204,7 +203,8 @@ public class SpecificTutor extends JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 try {
-                    RandomAccessFile raf = new RandomAccessFile("binary.dat", "rw");
+                    RandomAccessFile raf;
+                    raf = new RandomAccessFile("binary.dat", "rw");
                     raf.seek(4);
                     while (raf.getFilePointer() < raf.length()) {
                         if (raf.readUTF().equalsIgnoreCase(person.firstName) && raf.readUTF().equalsIgnoreCase(person.lastName)) {
@@ -213,15 +213,16 @@ public class SpecificTutor extends JFrame {
                                 raf.writeBoolean(person.availiability[i]);
                             }
                             break;
-                        }else
-                            raf.skipBytes(109);
+                        }else{
+                            raf.skipBytes(126);
+                        }
                     }
                     raf.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                     System.out.println("Something went wrong");
                 }
-
+                dispose();
             }
         });
 

@@ -65,7 +65,7 @@ public class SearchByName {
     boolean greadeElevenPreAPBiology;
     boolean greadeElevenPreAPMath;
     boolean[] availiability = new boolean[60];
-    String subjects = "MATHENGLISHASDFAWERASDF";
+    String subjects = "";
 
     public SearchByName(String firstName, String lastName, int grade, boolean semOnePerOne, boolean semOnePerTwo, boolean semOnePerThree, boolean semOnePerFour, boolean semOnePerFive, boolean semOneMonday, boolean semOneTuesday, boolean semOneWednesday, boolean semOneThursday, boolean semOneFriday, boolean semTwoPerOne, boolean semTwoPerTwo, boolean semTwoPerThree, boolean semTwoPerFour, boolean semTwoPerFive, boolean semTwoMonday, boolean semTwoTuesday, boolean semTwoWednesday, boolean semTwoThursday, boolean semTwoFriday, boolean greadeNineMath, boolean greadeNineEnglish, boolean greadeNineScience, boolean greadeNineGeography, boolean greadeNineFrench, boolean greadeNineFIFrench, boolean greadeNineFIScience, boolean greadeNineFIGeography, boolean greadeTenMath, boolean greadeTenEnglish, boolean greadeTenScience, boolean greadeTenHistory, boolean greadeTenFrench, boolean greadeTenFIFrench, boolean greadeTenFIScience, boolean greadeTenFIHistory, boolean greadeElevenMath, boolean greadeElevenEnglish, boolean greadeElevenBiology, boolean greadeElevenChemistry, boolean greadeElevenPhysics, boolean greadeElevenFrench, boolean greadeElevenFIFrench, boolean greadeElevenPreAPBiology, boolean greadeElevenPreAPMath, boolean[] avab) {
         this.firstName = firstName;
@@ -117,6 +117,59 @@ public class SearchByName {
         this.greadeElevenPreAPBiology = greadeElevenPreAPBiology;
         this.greadeElevenPreAPMath = greadeElevenPreAPMath;
         this.availiability = avab;
+        
+        //set subject string to match what subjects tutors teach
+        if(greadeNineMath)
+            subjects += "9 Math, ";
+        if(greadeNineEnglish)
+            subjects += "9 English, ";
+        if(greadeNineScience)
+            subjects += "9 Science, ";
+        if(greadeNineGeography)
+            subjects += "Geography, ";
+        if(greadeNineFrench)
+            subjects += "9 French, ";
+        if(greadeNineFIFrench)
+            subjects += "9 FI French, ";
+        if(greadeNineFIScience)
+            subjects += "9 FI Science, ";
+        if(greadeNineFIGeography)
+            subjects += "FI Geography, ";
+        if(greadeTenMath)
+            subjects += "10 Math, ";
+        if(greadeTenEnglish)
+            subjects += "10 English, ";
+        if(greadeTenScience)
+            subjects += "10 Science, ";
+        if(greadeTenHistory)
+            subjects += "History, ";
+        if(greadeTenFrench)
+            subjects += "10 French, ";
+        if(greadeTenFIFrench)
+            subjects += "10 FI French, ";
+        if(greadeTenFIScience)
+            subjects += "10 FI Science, ";
+        if(greadeTenFIHistory)
+            subjects += "FI History, ";
+        if(greadeElevenMath)
+            subjects += "11 Math, ";
+        if(greadeElevenEnglish)
+            subjects += "11 English, ";
+        if(greadeElevenBiology)
+            subjects += "11 Biology, ";
+        if(greadeElevenChemistry)
+            subjects += "11 Chemistry, ";
+        if(greadeElevenPhysics)
+            subjects += "11 Physics, ";
+        if(greadeElevenFrench)
+            subjects += "11 French, ";
+        if(greadeElevenFIFrench)
+            subjects += "11 FI French, ";
+        if(greadeElevenPreAPBiology)
+            subjects += "11 Pre-AP Bio, ";
+        if(greadeElevenPreAPMath)
+            subjects += "11 Pre-AP Math, ";
+        subjects = subjects.substring(0, subjects.length() - 2);
     }
 
     public static SearchByName searchByName(String file, String firstName, String lastName) throws FileNotFoundException, IOException {

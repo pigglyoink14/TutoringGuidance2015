@@ -19,13 +19,13 @@ import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashSet;
+import javax.swing.BorderFactory;
+import javax.swing.JSeparator;
 
 public class findTutor extends JFrame {
 
     private JPanel contentPane;
-    private JTextField textField;
     private JLabel lblLastName;
-    private JTextField textField_1;
     private JCheckBox chckbxPeriod;
     private JCheckBox chckbxPeriod_1;
     private JCheckBox chckbxPeriod_2;
@@ -43,6 +43,7 @@ public class findTutor extends JFrame {
         btnNewButton.setEnabled(false);
         
         //subject checkboxes
+        JCheckBox chckbxNewCheckBox = new JCheckBox("Math\r\n");
         JCheckBox checkBox = new JCheckBox("Math\r\n");
         JCheckBox checkBox_1 = new JCheckBox("Math\r\n");
         JCheckBox chckbxEnglish = new JCheckBox("English");
@@ -72,7 +73,7 @@ public class findTutor extends JFrame {
         ItemListener il = new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e){
-                if( e.getStateChange() == 1 && (e.getSource().equals(checkBox) || e.getSource().equals(checkBox_1) || e.getSource().equals(chckbxEnglish) || e.getSource().equals(checkBox_2)
+                if( e.getStateChange() == ItemEvent.SELECTED && (e.getSource().equals(chckbxNewCheckBox) || e.getSource().equals(checkBox) || e.getSource().equals(checkBox_1) || e.getSource().equals(chckbxEnglish) || e.getSource().equals(checkBox_2)
                         || e.getSource().equals(checkBox_3) || e.getSource().equals(chckbxScience) || e.getSource().equals(chckbxGeography) || e.getSource().equals(chckbxHistory)
                         || e.getSource().equals(chckbxChemistry) || e.getSource().equals(chckbxFrench) || e.getSource().equals(chckbxFrench_1) || e.getSource().equals(chckbxPhysics)
                         || e.getSource().equals(chckbxFiFrench) || e.getSource().equals(chckbxFiFrench_1) || e.getSource().equals(chckbxFrench_2) || e.getSource().equals(chckbxFiScience)
@@ -96,23 +97,18 @@ public class findTutor extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new MigLayout("", "[][grow][grow][]", "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]"));
 
-        JLabel lblFirstName = new JLabel("First Name");
-        lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 14));
-        contentPane.add(lblFirstName, "cell 1 0");
-
-        lblLastName = new JLabel("Last Name");
-
-        lblLastName.setFont(new Font("Tahoma", Font.BOLD, 14));
-        contentPane.add(lblLastName, "cell 2 0");
-
-        textField = new JTextField();
-        contentPane.add(textField, "cell 1 1,growx");
-        textField.setColumns(10);
-
-        textField_1 = new JTextField();
-        contentPane.add(textField_1, "cell 2 1,growx");
-        textField_1.setColumns(10);
-
+        
+        JLabel instructions = new JLabel("Please pick a Subject, and Day/Period you wish to find a Tutor for.");
+        instructions.setFont(new Font("Tahoma", Font.BOLD, 14));
+        contentPane.add(instructions, "cell 1 0 3 0, grow");
+        
+        JLabel periodLabel = new JLabel("Periods");
+        periodLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+        contentPane.add(periodLabel, "cell 1 1");
+        
+        JSeparator ln3 = new JSeparator();
+        contentPane.add(ln3, "cell 1 2 3 0, grow");
+        
         chckbxPeriod = new JCheckBox("Period 1\r\n");
         contentPane.add(chckbxPeriod, "cell 1 3");
 
@@ -127,25 +123,28 @@ public class findTutor extends JFrame {
 
         chckbxPeriod_4 = new JCheckBox("Period 5");
         contentPane.add(chckbxPeriod_4, "cell 1 5");
-
+        
         JLabel lblAfterSchool = new JLabel("After School");
-        lblAfterSchool.setFont(new Font("Tahoma", Font.BOLD, 12));
+        lblAfterSchool.setFont(new Font("Tahoma", Font.BOLD, 14));
         contentPane.add(lblAfterSchool, "cell 1 8");
+        
+        JSeparator ln2 = new JSeparator();
+        contentPane.add(ln2, "cell 1 9 3 0, grow");
 
         JCheckBox chckbxMonday = new JCheckBox("Monday");
-        contentPane.add(chckbxMonday, "cell 1 9");
+        contentPane.add(chckbxMonday, "cell 1 10");
 
         JCheckBox chckbxTuesday = new JCheckBox("Tuesday");
-        contentPane.add(chckbxTuesday, "cell 2 9");
+        contentPane.add(chckbxTuesday, "cell 2 10");
 
         JCheckBox chckbxWednesday = new JCheckBox("Wednesday");
-        contentPane.add(chckbxWednesday, "cell 3 9");
+        contentPane.add(chckbxWednesday, "cell 3 10");
 
         JCheckBox chckbxThursday = new JCheckBox("Thursday");
-        contentPane.add(chckbxThursday, "cell 1 10");
+        contentPane.add(chckbxThursday, "cell 1 11");
 
         JCheckBox chckbxFriday = new JCheckBox("Friday");
-        contentPane.add(chckbxFriday, "cell 2 10");
+        contentPane.add(chckbxFriday, "cell 2 11");
 
         JCheckBox chckbxSemester = new JCheckBox("Semester 1");
         contentPane.add(chckbxSemester, "cell 1 16");
@@ -153,22 +152,23 @@ public class findTutor extends JFrame {
         JCheckBox chckbxSemester_1 = new JCheckBox("Semester 2");
         contentPane.add(chckbxSemester_1, "cell 2 16");
 
-        lblSubjects = new JLabel("Subjects:");
+        lblSubjects = new JLabel("Subjects");
         lblSubjects.setFont(new Font("Tahoma", Font.BOLD, 14));
         contentPane.add(lblSubjects, "cell 1 23");
 
         JLabel lblGrade = new JLabel("Grade 9");
-        lblGrade.setFont(new Font("Tahoma", Font.ITALIC, 12));
+        lblGrade.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblGrade, "cell 1 25");
 
         JLabel lblGrade_1 = new JLabel("Grade 10");
-        lblGrade_1.setFont(new Font("Tahoma", Font.ITALIC, 12));
+        lblGrade_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblGrade_1, "cell 2 25");
 
         JLabel lblGrade_2 = new JLabel("Grade 11");
-        lblGrade_2.setFont(new Font("Tahoma", Font.ITALIC, 12));
+        lblGrade_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
         contentPane.add(lblGrade_2, "cell 3 25");
-        JCheckBox chckbxNewCheckBox = new JCheckBox("Math\r\n");
+        
+        chckbxNewCheckBox.addItemListener(il);
         contentPane.add(chckbxNewCheckBox, "cell 1 27");
 
         checkBox.addItemListener(il);
@@ -244,6 +244,9 @@ public class findTutor extends JFrame {
         chckbxPreApMath.addItemListener(il);
         contentPane.add(chckbxPreApMath, "cell 3 35");
         
+        JSeparator separator = new JSeparator();
+        contentPane.add(separator, "cell 1 24 3 0, grow");
+        
         //when find button is pressed
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -251,7 +254,7 @@ public class findTutor extends JFrame {
                 HashSet<SearchByName> people = new HashSet<>();
                 try {
                     if (chckbxNewCheckBox.isSelected()) {
-                        people.addAll(SearchByName.searchBySubject("binary.dat", 58));
+                        people.addAll(SearchByName.searchBySubject("binary.dat", 58));                     
 
                     }
                     if (chckbxEnglish.isSelected()) {
